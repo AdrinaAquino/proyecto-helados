@@ -1,6 +1,20 @@
-import React from "react";
+import { crearSucursal } from "../axios/sucursales/sucursales";
 
 export default function AgregarSucursal({ handleNuevoSucursal }) {
+  const { register } = useForm();
+
+  async function handleCreate(data) {
+    try {
+      const status = await crearSucursal(data);
+      if (status === 200) {
+        alert("Sucursal creada con éxito");
+        cerrarModal();
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error al crear la sucursal:", error);
+    }
+  }
   return (
     <>
       <div className="w-100 border border-gray-300 rounded-lg bg-white shadow-md m-2">
@@ -14,10 +28,11 @@ export default function AgregarSucursal({ handleNuevoSucursal }) {
           </button>
         </div>
 
-        <form className="p-4 space-y-4">
+        <form className="p-4 space-y-4" onSubmit={handleSubmit(handleCreate)}>
           <label className="block text-sm font-medium mb-2">Nombre</label>
           <input
             type="text"
+            {...register}
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Nombre de la sucursal"

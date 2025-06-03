@@ -35,7 +35,14 @@ export default function Aside({ openMenu }) {
         >
           Inventarios
         </Link>
-        <button className="font-bold hover:text-yellow-400">
+        <button
+          onClick={() => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            window.location.href = "/login";
+          }}
+          className=" font-bold px-1 py-2 rounded-md hover:bg-slate-700 transition "
+        >
           Cerrar sesión
         </button>
       </nav>

@@ -2,25 +2,33 @@ import axios from "axios";
 
 export const instance = axios.create({
   baseURL: "https://api-acai.onrender.com",
-  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
   },
 });
+
+instance.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 const success = (response) => response;
 const error = (error) => {
-  console.log(error.response.data.message);
-  if (
-    error.status === 401 &&
-    error.response.data.message !== "Invalid credentials"
-  ) {
+  const status = error.response?.status;
+  const message = error.response?.data?.message;
+  console.log("Axios error:", message);
+  if (status === 401 && message !== "Credenciales inválidas") {
     window.location.href = "/login";
   }
-
-  if (error.status === 403) {
-    window.location.href = "/forbiden";
+  if (status === 403) {
+    window.location.href = "/forbidden";
   }
+
   return Promise.reject(error);
 };
+
 instance.interceptors.response.use(success, error);

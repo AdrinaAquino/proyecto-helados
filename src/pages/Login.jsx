@@ -3,21 +3,28 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../axios/auth/login";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [clave, setClave] = useState("");
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const handleSubmit = async (e) => {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  async function handleLogin(e) {
     e.preventDefault();
+    setError("");
+    setLoading(true);
+    const formData = new FormData(e.target);
+    const credentials = Object.fromEntries(formData.entries());
+
     try {
-      const res = await login({ email, clave });
-      // Guarda el usuario completo
-      localStorage.setItem("user", JSON.stringify(res.data));
-      navigate("/"); // Redirige al dashboard
+      const res = await login(credentials);
+      if (!res.access_token || !res.user) throw new Error("Respuesta inválida");
+
+      localStorage.setItem("token", res.access_token);
+      localStorage.setItem("user", JSON.stringify(res.user));
+      navigate("/", { replace: true });
     } catch (err) {
-      setError("Credenciales inválidas");
+      setError(err.message || "Error al iniciar sesión");
+      setLoading(false);
     }
-  };
+  }
   return (
     <div>
       <div className="flex flex-col h-screen items-center">
@@ -31,12 +38,9 @@ export default function Login() {
         <div className="flex flex-col justify-center items-center w-75 md:h-auto bg-[#dbe9fbee] rounded-lg shadow-lg shadow-cyan-900 p-6 sm:w-100 sm:absolute sm:left-1/2 sm:top-30 sm:-translate-x-1/2">
           <img src="logo.jpeg" alt="" className="w-15 rounded-full sm:w-30" />
           <h2 className="text-2xl font-bold mb-6">Bienvenido</h2>
-          <form className="w-full max-w-sm" onSubmit={handleSubmit}>
+          <form className="w-full max-w-sm" onSubmit={handleLogin}>
             <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-2 "
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-2 ">
                 Nombre de usuario
               </label>
               <input
@@ -67,13 +71,22 @@ export default function Login() {
             {error && (
               <p className="text-red-600 text-sm font-medium mb-4">{error}</p>
             )}
-
-            <button
-              type="submit"
-              className="font-bold w-full py-2 px-4 rounded-md bg-[#c87bcf95] hover:bg-[#ce85ed95] text-[#1d1c1d] border border-[#560a5d95] cursor-pointer"
-            >
-              INICIAR SESIÓN
-            </button>
+            {loading ? (
+              <button
+                type="button"
+                className="w-full py-2 px-4 rounded-md bg-[#c87bcf95] text-[#1d1c1d] border border-[#560a5d95] cursor-not-allowed"
+                disabled
+              >
+                Cargando...
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="font-bold w-full py-2 px-4 rounded-md bg-[#c87bcf95] hover:bg-[#ce85ed95] text-[#1d1c1d] border border-[#560a5d95] cursor-pointer"
+              >
+                INICIAR SESIÓN
+              </button>
+            )}
           </form>
         </div>
       </div>
