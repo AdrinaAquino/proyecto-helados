@@ -1,14 +1,16 @@
+import { useForm } from "react-hook-form";
 import { crearSucursal } from "../axios/sucursales/sucursales";
 
-export default function AgregarSucursal({ handleNuevoSucursal }) {
-  const { register } = useForm();
+export default function AgregarSucursal({ setModalNuevoSucursal }) {
+  const { register, handleSubmit } = useForm();
 
   async function handleCreate(data) {
     try {
       const status = await crearSucursal(data);
-      if (status === 200) {
+      console.log(status);
+      if (status === 201) {
         alert("Sucursal creada con éxito");
-        cerrarModal();
+        setModalNuevoSucursal(false);
         window.location.reload();
       }
     } catch (error) {
@@ -22,7 +24,7 @@ export default function AgregarSucursal({ handleNuevoSucursal }) {
           <h2>Nueva Sucursal</h2>
           <button
             className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
-            onClick={handleNuevoSucursal}
+            onClick={() => setModalNuevoSucursal(false)}
           >
             X
           </button>
@@ -32,7 +34,7 @@ export default function AgregarSucursal({ handleNuevoSucursal }) {
           <label className="block text-sm font-medium mb-2">Nombre</label>
           <input
             type="text"
-            {...register}
+            {...register("nombre")}
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Nombre de la sucursal"
@@ -41,6 +43,7 @@ focus:ring-2 focus:ring-[#89408d]"
           <label className="block text-sm font-medium mb-2">Ubicación</label>
           <input
             type="text"
+            {...register("direccion")}
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Ubicación de la sucursal"
@@ -49,6 +52,7 @@ focus:ring-2 focus:ring-[#89408d]"
           <label className="block text-sm font-medium mb-2">Teléfono</label>
           <input
             type="text"
+            {...register("telefono")}
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Número de teléfono"
@@ -59,6 +63,7 @@ focus:ring-2 focus:ring-[#89408d]"
           </label>
           <input
             type="time"
+            {...register("horario_apertura")}
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Horario de apertura"
@@ -69,11 +74,12 @@ focus:ring-2 focus:ring-[#89408d]"
           </label>
           <input
             type="time"
+            {...register("horario_cierre")}
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Horario de cierre"
           />
-          <div className="flex justify-end mt-4">
+          <div className="flex justify-end mt-4" typeof="submit">
             <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer">
               Guardar Sucursal
             </button>

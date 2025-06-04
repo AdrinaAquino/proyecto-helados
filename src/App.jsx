@@ -20,12 +20,11 @@ function DashboardLayout() {
     }
   };
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100">
       <NavBar toggleMenu={toggleMenu} />
-      <div className="md:flex">
+      <div className="flex flex-col md:flex-row mx-auto">
         <Aside openMenu={openMenu} />
-        <main className="flex-1 m-4">
-          {" "}
+        <main className="flex-1 p-4 overflow-auto min-h-screen bg-white">
           <Outlet />
         </main>
       </div>

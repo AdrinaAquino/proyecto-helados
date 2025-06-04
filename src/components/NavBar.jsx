@@ -1,6 +1,6 @@
 export default function NavBar({ toggleMenu }) {
   return (
-    <div className="bg-[#7a4193] text-white p-4 flex justify-between items-center shadow-md shadow-violet-200">
+    <div className="w-full bg-[#7a4193] text-white p-4 flex justify-between items-center shadow-md shadow-violet-200">
       <img src="logo.jpeg" alt="Logo" className="h-10 rounded-full" />
       <button className="md:hidden" onClick={toggleMenu}>
         <svg

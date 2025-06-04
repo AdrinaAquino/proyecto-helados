@@ -5,7 +5,7 @@ export default function Aside({ openMenu }) {
     <aside
       className={`${
         openMenu ? "block" : "hidden"
-      } md:block absolute right-0 top-18 md:top-0 h-80 w-45 border border-[#8704af] rounded-2xl bg-[#804193d2] font-semibold cursor-pointer md:rounded-none  md:relative md:w-56 md:h-screen md:bg-[#7a4193] text-[#fefffc] p-4`}
+      } md:block absolute right-0 top-18 md:top-0 h-70 w-45 shrink-0 flex-none border border-[#8704af] rounded-2xl bg-[#804193d2] font-semibold cursor-pointer md:rounded-none  md:relative md:w-45 md:h-auto md:bg-[#7a4193] text-[#fefffc] p-4 overflow-y-auto`}
     >
       <nav className="space-y-2 flex flex-col">
         <Link

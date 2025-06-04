@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { editarSucursal } from "../axios/sucursales/sucursales";
 import { useForm } from "react-hook-form";
 
-export default function EditarSucursal({ cerrarModal, sucursal }) {
+export default function EditarSucursal({ setModalAbierto, sucursal }) {
   const { register, reset, handleSubmit } = useForm();
+  console.log(sucursal.id_sucursal);
   useEffect(() => {
     if (sucursal) {
       reset({
@@ -20,7 +21,7 @@ export default function EditarSucursal({ cerrarModal, sucursal }) {
       const status = await editarSucursal(requestData, sucursal.id_sucursal);
       if (status === 200) {
         alert("Sucursal editada con éxito");
-        cerrarModal();
+        setModalAbierto(false);
         window.location.reload();
       }
     } catch (error) {
@@ -35,7 +36,7 @@ export default function EditarSucursal({ cerrarModal, sucursal }) {
           <h2>Editar Sucursal</h2>
           <button
             className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
-            onClick={cerrarModal}
+            onClick={() => setModalAbierto(false)}
           >
             X
           </button>

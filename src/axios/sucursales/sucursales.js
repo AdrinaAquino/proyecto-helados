@@ -27,3 +27,12 @@ export async function crearSucursal(request) {
     throw error;
   }
 }
+
+export async function eliminarSucursal(id_sucursal) {
+  try {
+    const { status } = await instance.delete(`/sucursales/${id_sucursal}`);
+    return status;
+  } catch (error) {
+    throw error;
+  }
+}
