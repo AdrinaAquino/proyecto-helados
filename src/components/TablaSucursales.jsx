@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import EditarSucursal from "./EditarSucursal";
 import { eliminarSucursal } from "../axios/sucursales/sucursales";
 import ModalConfirmacion from "./ModalConfirmacion";
@@ -26,12 +26,12 @@ export default function TablaSucursales({ data }) {
   };
 
   return (
-    <div className="overflow-x-auto overflow-visible p-4">
-      <div className="rounded-lg shadow-lg">
-        <table className="min-w-full bg-white">
+    <div className="overflow-x-auto p-4 ">
+      <div className="shadow-lg ">
+        <table className="min-w-full bg-white overflow-hidden rounded-lg">
           <thead className="bg-[#89408d] text-white">
             <tr>
-              <th className="py-2 px-4">Nombre</th>
+              <th className="py-2 px-4 ">Nombre</th>
               <th className="py-2 px-4">Ubicación</th>
               <th className="py-2 px-4">Horario Apertura</th>
               <th className="py-2 px-6">Horario Cierre</th>
@@ -42,7 +42,7 @@ export default function TablaSucursales({ data }) {
             return (
               <tbody key={index}>
                 <tr className="border-b border-gray-200 hover:bg-gray-100 text-center">
-                  <td className="py-2 px-4">{sucursal.nombre}</td>
+                  <td className="py-2 px-4 ">{sucursal.nombre}</td>
                   <td className="py-2 px-4">{sucursal.direccion}</td>
                   <td className="py-2 px-4">{sucursal.horario_apertura}</td>
                   <td className="py-2 px-4">{sucursal.horario_cierre}</td>
@@ -117,8 +117,11 @@ export default function TablaSucursales({ data }) {
             );
           })}
         </table>
+        {sucursalVer && (
+          <VerSucursal setSucursalVer={setSucursalVer} sucursal={sucursalVer} />
+        )}
         {sucursalEditar && (
-          <div className="fixed inset-0 bg-[#6563635d] flex items-center justify-center">
+          <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
             <EditarSucursal
               setModalAbierto={setSucursalEditar}
               sucursal={sucursalEditar}
@@ -132,9 +135,6 @@ export default function TablaSucursales({ data }) {
             onConfirmar={confirmarEliminacion}
             onCancelar={() => setSucursalEliminar(null)}
           />
-        )}
-        {sucursalVer && (
-          <VerSucursal setSucursalVer={setSucursalVer} sucursal={sucursalVer} />
         )}
       </div>
     </div>

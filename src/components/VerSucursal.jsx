@@ -3,9 +3,9 @@ import React from "react";
 export default function VerSucursal({ setSucursalVer, sucursal }) {
   return (
     <div>
-      <div className="fixed inset-0 flex items-center justify-center bg-[#918c957d] z-50">
-        <div className="bg-white rounded-2xl w-full max-w-md shadow-xl relative">
-          <div className="flex justify-between items-center rounded-t-2xl bg-[#89408d] text-white p-3">
+      <div className="fixed inset-0 flex items-center justify-center bg-[#aea7b46d] z-50">
+        <div className="bg-white rounded-lg overflow-hidden w-full max-w-md shadow-xl relative">
+          <div className="flex justify-between items-center bg-[#89408d] text-white p-3">
             <h2 className="text-xl font-bold">Detalles de la Sucursal</h2>
             <button
               onClick={() => setSucursalVer(null)}

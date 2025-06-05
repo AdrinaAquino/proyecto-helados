@@ -6,12 +6,12 @@ import { listaSucursales } from "../axios/sucursales/sucursales";
 export default function Sucursales() {
   const [modalNuevoSucursal, setModalNuevoSucursal] = useState(false);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     listaSucursales()
       .then((rs) => setData(rs))
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
   }, []);
   return (
     <div>
@@ -26,9 +26,17 @@ export default function Sucursales() {
           <strong className="text-xl">+</strong> Nueva Sucursal
         </button>
       </div>
-      <TablaSucursales data={data} setData={setData} />
+      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+        {loading ? (
+          <p className="text-center text-lg py-10 text-purple-700">
+            Cargando sucursales...
+          </p>
+        ) : (
+          <TablaSucursales data={data} setData={setData} />
+        )}
+      </div>
       {modalNuevoSucursal && (
-        <div className="fixed inset-0 bg-[#6563635d] flex items-center justify-center">
+        <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
           <AgregarSucursal setModalNuevoSucursal={setModalNuevoSucursal} />
         </div>
       )}

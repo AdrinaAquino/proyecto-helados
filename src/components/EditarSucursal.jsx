@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { editarSucursal } from "../axios/sucursales/sucursales";
 import { useForm } from "react-hook-form";
 
 export default function EditarSucursal({ setModalAbierto, sucursal }) {
   const { register, reset, handleSubmit } = useForm();
-  console.log(sucursal.id_sucursal);
   useEffect(() => {
     if (sucursal) {
       reset({
@@ -47,6 +46,7 @@ export default function EditarSucursal({ setModalAbierto, sucursal }) {
           <input
             type="text"
             {...register("nombre")}
+            required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Nombre de la sucursal"
@@ -56,6 +56,7 @@ focus:ring-2 focus:ring-[#89408d]"
           <input
             type="text"
             {...register("direccion")}
+            required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Ubicación de la sucursal"
@@ -65,6 +66,7 @@ focus:ring-2 focus:ring-[#89408d]"
           <input
             type="text"
             {...register("telefono")}
+            required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Número de teléfono"
@@ -76,6 +78,7 @@ focus:ring-2 focus:ring-[#89408d]"
           <input
             type="time"
             {...register("horario_apertura")}
+            required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Horario de apertura"
@@ -87,6 +90,7 @@ focus:ring-2 focus:ring-[#89408d]"
           <input
             type="time"
             {...register("horario_cierre")}
+            required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
 focus:ring-2 focus:ring-[#89408d]"
             placeholder="Horario de cierre"
