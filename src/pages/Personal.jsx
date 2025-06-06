@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import TablaPersonal from "../components/TablaPersonal";
 import { listapersonal, listaSucursales } from "../axios/personal/personal";
+import AgregarPersonal from "../components/AgregarPersonal";
 
 export default function Personal() {
+  const [modalNuevoPersonal, setModalNuevoPersonal] = useState(false);
   const [dataSucursales, setDataSucursales] = useState([]);
   const [dataPersonal, setDataPersonal] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,7 +51,18 @@ export default function Personal() {
         )}
       </div>
       <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">Personal de Sucursal Sur</h2>
+        <div className=" md:flex justify-between items-center">
+          <h2 className="text-xl font-semibold mb-2">
+            Personal de Sucursal Sur
+          </h2>
+          <button
+            className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600"
+            onClick={() => setModalNuevoPersonal(true)}
+          >
+            <strong className="text-xl">+</strong> Nueva Personal
+          </button>
+        </div>
+
         {loading ? (
           <p className="text-center text-lg py-10 text-purple-700">
             Cargando Personal...
@@ -59,6 +72,15 @@ export default function Personal() {
             dataPersonal={dataPersonal}
             dataSucursales={dataSucursales}
           />
+        )}
+        {modalNuevoPersonal && (
+          <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+            <AgregarPersonal
+              setModalNuevoPersonal={setModalNuevoPersonal}
+              personal={dataPersonal}
+              sucursales={dataSucursales}
+            />
+          </div>
         )}
       </div>
     </div>

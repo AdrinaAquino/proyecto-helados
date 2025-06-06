@@ -3,23 +3,31 @@ import { eliminarPersonal } from "../axios/personal/personal";
 import ModalConfirmacion from "./ModalConfirmacion";
 import VerPersonal from "./VerPersonal";
 import EditarPersonal from "./EditarPersonal";
+import ModalAlerta from "../components/ModalAlerta";
+import { useModalAlerta } from "../hooks/useModalAlerta";
 
 export default function TablaPersonal({ dataPersonal, dataSucursales }) {
   const [personalVer, setPersonalVer] = useState(null);
   const [personalEditar, setPersonalEditar] = useState(null);
   const [personalEliminar, setPersonalEliminar] = useState(null);
+  const { alerta, mostrarAlerta } = useModalAlerta();
+
   const confirmarEliminacion = async () => {
     if (personalEliminar) {
       try {
         const status = await eliminarPersonal(personalEliminar.id_personal);
         if (status === 204) {
-          alert("Personal eliminado con éxito");
-          setPersonalEliminar(null);
-          window.location.reload();
+          mostrarAlerta("exito", "Personal Eliminado con Éxito");
+          setTimeout(() => {
+            setPersonalEliminar(false);
+          }, 2000);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
         }
       } catch (error) {
         console.error("Error eliminando personal:", error);
-        alert("Hubo un error al eliminar el personal.");
+        mostrarAlerta("error", "Error al Eliminar Personal");
       }
     }
   };
@@ -159,6 +167,11 @@ export default function TablaPersonal({ dataPersonal, dataSucursales }) {
           />
         )}
       </div>
+      <ModalAlerta
+        show={alerta.show}
+        tipo={alerta.tipo}
+        mensaje={alerta.mensaje}
+      />
     </div>
   );
 }

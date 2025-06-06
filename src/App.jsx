@@ -6,9 +6,12 @@ import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import Sucursales from "./pages/Sucursales";
 import Personal from "./pages/Personal";
 import Pedidos from "./pages/Pedidos";
-import Inventarios from "./pages/Inventarios.jsx";
-import Unauthorized from "./pages/Unauthorized.jsx";
-import PrivateRoute from "./components/PrivateRoute.jsx";
+import Clientes from "./pages/Clientes";
+import Productos from "./pages/Productos";
+import Inventarios from "./pages/Inventarios";
+import Predicciones from "./pages/Predicciones";
+import Unauthorized from "./pages/Unauthorized";
+import PrivateRoute from "./components/PrivateRoute";
 
 function DashboardLayout() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -49,11 +52,22 @@ export default function App() {
         </Route>
 
         <Route element={<PrivateRoute allowedRoles={[1]} />}>
-          <Route path="/pedidos" element={<Pedidos />} />
+          <Route path="/clientes" element={<Clientes />} />
+        </Route>
+
+        <Route element={<PrivateRoute allowedRoles={[1]} />}>
+          <Route path="/productos" element={<Productos />} />
         </Route>
 
         <Route element={<PrivateRoute allowedRoles={[1]} />}>
           <Route path="/inventarios" element={<Inventarios />} />
+        </Route>
+        <Route element={<PrivateRoute allowedRoles={[1]} />}>
+          <Route path="/pedidos" element={<Pedidos />} />
+        </Route>
+
+        <Route element={<PrivateRoute allowedRoles={[1]} />}>
+          <Route path="/predicciones" element={<Predicciones />} />
         </Route>
       </Route>
     </Routes>

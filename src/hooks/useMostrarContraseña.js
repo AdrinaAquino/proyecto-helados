@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function MostrarContraseña() {
+export default function useMostrarContraseña() {
   const [mostrar, setMostrar] = useState(false);
   const toggleMostrar = () => setMostrar(!mostrar);
 

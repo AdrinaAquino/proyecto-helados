@@ -1,69 +1,56 @@
-import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { editarPersonal } from "../axios/personal/personal";
+import { crearPersonal } from "../axios/personal/personal";
 import useMostrarContraseña from "../hooks/useMostrarContraseña";
 import { useModalAlerta } from "../hooks/useModalAlerta";
 import ModalAlerta from "../components/ModalAlerta";
 
-export default function EditarPersonal({
-  setModalAbierto,
+export default function AgregarPersonal({
+  setModalNuevoPersonal,
   personal,
   sucursales,
 }) {
-  const { register, reset, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
   const { mostrar, toggleMostrar } = useMostrarContraseña();
   const { alerta, mostrarAlerta } = useModalAlerta();
-
-  useEffect(() => {
-    if (personal) {
-      reset({
-        nombre: personal.nombre,
-        usuario: personal.usuario,
-        contraseña: personal.contraseña,
-        id_rol: personal.id_rol,
-        id_sucursal: personal.id_sucursal,
-      });
-    }
-  }, [personal, reset]);
-  async function handleEdit(requestData) {
+  async function handleCrear(requestData) {
     try {
-      const status = await editarPersonal(requestData, personal.id_personal);
-      if (status === 200) {
-        mostrarAlerta("exito", "Personal Editado con Éxito");
+      const status = await crearPersonal(requestData, personal.id_personal);
+      if (status === 201) {
+        mostrarAlerta("exito", "Personal Creado con Éxito");
         setTimeout(() => {
-          setModalAbierto(false);
+          setModalNuevoPersonal(false);
         }, 3000);
         setTimeout(() => {
           window.location.reload();
         }, 4000);
       }
     } catch (error) {
-      console.error("Error al editar los datos de la persona:", error);
-      mostrarAlerta("error", "Error al Editar Personal");
+      console.error("Error al crear los datos de la persona:", error);
+      mostrarAlerta("error", "Error al Crear Personal");
     }
   }
 
   return (
     <>
       <div className="w-100 border border-gray-300 rounded-lg bg-white shadow-md m-2">
-        <div className="flex justify-between  bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
-          <h2>Editar Datos de la Persona</h2>
+        <div className="flex justify-between bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
+          <h2>Crear Datos de la Persona</h2>
           <button
             className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
-            onClick={() => setModalAbierto(false)}
+            onClick={() => setModalNuevoPersonal(false)}
           >
             X
           </button>
         </div>
 
-        <form className="p-4 space-y-4" onSubmit={handleSubmit(handleEdit)}>
+        <form className="p-4 space-y-4" onSubmit={handleSubmit(handleCrear)}>
           <label className="block text-sm font-medium mb-2">Nombre</label>
           <input
             type="text"
             {...register("nombre")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-  focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#89408d]"
             placeholder="Nombre Completo"
           />
 
@@ -73,7 +60,7 @@ export default function EditarPersonal({
             {...register("usuario")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-  focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#89408d]"
             placeholder="Nombre de usuario"
           />
 
@@ -82,8 +69,9 @@ export default function EditarPersonal({
             <input
               type={mostrar ? "text" : "password"}
               {...register("contraseña")}
+              required
               className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d] pr-12"
+      focus:ring-2 focus:ring-[#89408d] pr-12"
               placeholder="Contraseña"
             />
             <button
@@ -142,7 +130,7 @@ export default function EditarPersonal({
             {...register("id_rol")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-  focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#89408d] cursor-pointer"
           >
             <option value="1">Administrador</option>
             <option value="2">Encargado de Sucursal</option>
@@ -154,7 +142,7 @@ export default function EditarPersonal({
             {...register("id_sucursal")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-  focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#89408d] cursor-pointer"
           >
             <option value="">Todas</option>
             {sucursales.map((sucursal) => (

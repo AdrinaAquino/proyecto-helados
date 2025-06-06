@@ -3,24 +3,31 @@ import EditarSucursal from "./EditarSucursal";
 import { eliminarSucursal } from "../axios/sucursales/sucursales";
 import ModalConfirmacion from "./ModalConfirmacion";
 import VerSucursal from "./VerSucursal";
+import ModalAlerta from "../components/ModalAlerta";
+import { useModalAlerta } from "../hooks/useModalAlerta";
 
 export default function TablaSucursales({ data }) {
   const [sucursalVer, setSucursalVer] = useState(null);
   const [sucursalEditar, setSucursalEditar] = useState(null);
   const [sucursalEliminar, setSucursalEliminar] = useState(null);
+  const { alerta, mostrarAlerta } = useModalAlerta();
 
   const confirmarEliminacion = async () => {
     if (sucursalEliminar) {
       try {
         const status = await eliminarSucursal(sucursalEliminar.id_sucursal);
         if (status === 204) {
-          alert("Sucursal eliminada con éxito");
-          setSucursalEliminar(null);
-          window.location.reload();
+          mostrarAlerta("exito", "Sucursal Eliminada con Éxito");
+          setTimeout(() => {
+            setSucursalEliminar(false);
+          }, 3000);
+          setTimeout(() => {
+            window.location.reload();
+          }, 4000);
         }
       } catch (error) {
         console.error("Error eliminando sucursal:", error);
-        alert("Hubo un error al eliminar la sucursal.");
+        mostrarAlerta("error", "Error al Eliminar Sucursal");
       }
     }
   };
@@ -137,6 +144,11 @@ export default function TablaSucursales({ data }) {
           />
         )}
       </div>
+      <ModalAlerta
+        show={alerta.show}
+        tipo={alerta.tipo}
+        mensaje={alerta.mensaje}
+      />
     </div>
   );
 }

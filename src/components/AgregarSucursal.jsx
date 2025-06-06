@@ -1,20 +1,28 @@
 import { useForm } from "react-hook-form";
 import { crearSucursal } from "../axios/sucursales/sucursales";
+import ModalAlerta from "../components/ModalAlerta";
+import { useModalAlerta } from "../hooks/useModalAlerta";
 
 export default function AgregarSucursal({ setModalNuevoSucursal }) {
   const { register, handleSubmit } = useForm();
+  const { alerta, mostrarAlerta } = useModalAlerta();
 
   async function handleCreate(data) {
     try {
       const status = await crearSucursal(data);
       console.log(status);
       if (status === 201) {
-        alert("Sucursal creada con éxito");
-        setModalNuevoSucursal(false);
-        window.location.reload();
+        mostrarAlerta("exito", "Sucursal Creada con Éxito");
+        setTimeout(() => {
+          setModalNuevoSucursal(false);
+        }, 3000);
+        setTimeout(() => {
+          window.location.reload();
+        }, 4000);
       }
     } catch (error) {
-      console.error("Error al crear la sucursal:", error);
+      console.error("Error eliminando sucursal:", error);
+      mostrarAlerta("error", "Error al Crear Sucursal");
     }
   }
   return (
@@ -91,6 +99,11 @@ focus:ring-2 focus:ring-[#89408d]"
           </div>
         </form>
       </div>
+      <ModalAlerta
+        show={alerta.show}
+        tipo={alerta.tipo}
+        mensaje={alerta.mensaje}
+      />
     </>
   );
 }

@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { editarSucursal } from "../axios/sucursales/sucursales";
 import { useForm } from "react-hook-form";
+import ModalAlerta from "../components/ModalAlerta";
+import { useModalAlerta } from "../hooks/useModalAlerta";
 
 export default function EditarSucursal({ setModalAbierto, sucursal }) {
   const { register, reset, handleSubmit } = useForm();
+  const { alerta, mostrarAlerta } = useModalAlerta();
   useEffect(() => {
     if (sucursal) {
       reset({
@@ -19,12 +22,17 @@ export default function EditarSucursal({ setModalAbierto, sucursal }) {
     try {
       const status = await editarSucursal(requestData, sucursal.id_sucursal);
       if (status === 200) {
-        alert("Sucursal editada con éxito");
-        setModalAbierto(false);
-        window.location.reload();
+        mostrarAlerta("exito", "Sucursal Editada con Éxito");
+        setTimeout(() => {
+          setModalAbierto(false);
+        }, 3000);
+        setTimeout(() => {
+          window.location.reload();
+        }, 4000);
       }
     } catch (error) {
-      console.error("Error al editar la sucursal:", error);
+      console.error("Error eliminando sucursal:", error);
+      mostrarAlerta("error", "Error al Crear Sucursal");
     }
   }
 
@@ -105,6 +113,11 @@ focus:ring-2 focus:ring-[#89408d]"
           </div>
         </form>
       </div>
+      <ModalAlerta
+        show={alerta.show}
+        tipo={alerta.tipo}
+        mensaje={alerta.mensaje}
+      />
     </>
   );
 }
