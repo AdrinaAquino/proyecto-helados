@@ -1,6 +1,3 @@
-// components/ModalConfirmacion.jsx
-import React from "react";
-
 export default function ModalConfirmacion({
   mensaje,
   onConfirmar,

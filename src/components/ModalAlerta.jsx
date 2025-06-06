@@ -2,7 +2,6 @@ import React from "react";
 
 export default function ModalAlerta({ show, tipo, mensaje }) {
   if (!show) return null;
-
   const bgColor = tipo === "exito" ? "bg-green-500" : "bg-red-500";
   const titulo = tipo === "exito" ? "Éxito" : "Error";
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { editarSucursal } from "../axios/sucursales/sucursales";
 import { useForm } from "react-hook-form";
 import ModalAlerta from "../components/ModalAlerta";
@@ -28,17 +28,17 @@ export default function EditarSucursal({ setModalAbierto, sucursal }) {
         }, 3000);
         setTimeout(() => {
           window.location.reload();
-        }, 4000);
+        }, 3000);
       }
     } catch (error) {
-      console.error("Error eliminando sucursal:", error);
-      mostrarAlerta("error", "Error al Crear Sucursal");
+      console.error("Error al Editar sucursal:", error);
+      mostrarAlerta("error", "Error al Editar Sucursal");
     }
   }
 
   return (
     <>
-      <div className="w-100 border border-gray-300 rounded-lg bg-white shadow-md m-2">
+      <div className="w-100 rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between sucursals-center bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Editar Sucursal</h2>
           <button

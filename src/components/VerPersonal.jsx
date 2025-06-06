@@ -1,6 +1,3 @@
-import React from "react";
-import { data } from "react-router-dom";
-
 export default function VerPersonal({
   setPersonalVer,
   personal,

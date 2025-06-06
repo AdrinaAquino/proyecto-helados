@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TablaSucursales from "../components/TablaSucursales";
 import AgregarSucursal from "../components/AgregarSucursal";
 import { listaSucursales } from "../axios/sucursales/sucursales";
-import ModalAlerta from "../components/ModalAlerta";
 
 export default function Sucursales() {
   const [modalNuevoSucursal, setModalNuevoSucursal] = useState(false);

@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../axios/auth/login";
+import useMostrarContraseña from "../hooks/useMostrarContraseña";
 
 export default function Login() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { mostrar, toggleMostrar } = useMostrarContraseña();
+
   async function handleLogin(e) {
     e.preventDefault();
     setError("");
@@ -48,11 +51,12 @@ export default function Login() {
                 id="username"
                 name="username"
                 placeholder="Ingresa tu nombre de usuario"
-                className="hover:bg-[#b2d7f286] focus:bg-[#f4f9f9] w-full px-4 py-2 border border-gray-500 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
+      focus:ring-2 focus:ring-[#89408d] pr-12"
                 required
               />
             </div>
-            <div className="mb-6">
+            <div className="mb-6 relative">
               <label
                 htmlFor="password"
                 className=" block text-sm font-medium text-gray-700 mb-2"
@@ -60,13 +64,60 @@ export default function Login() {
                 Contraseña
               </label>
               <input
-                type="password"
-                id="password"
+                type={mostrar ? "text" : "password"}
                 name="password"
-                placeholder="Ingresa tu contraseña"
-                className=" hover:bg-[#b2d7f286] focus:bg-[#f4f9f9] w-full px-4 py-2 border border-gray-500 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
                 required
+                className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
+      focus:ring-2 focus:ring-[#89408d] pr-12"
+                placeholder="Contraseña"
               />
+              <button
+                type="button"
+                onClick={toggleMostrar}
+                className="absolute right-3 top-9 text-sm text-gray-600 hover:text-red-500  cursor-pointer"
+              >
+                {mostrar ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="red"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                    />
+                  </svg>
+                )}
+              </button>
             </div>
             {error && (
               <p className="text-red-600 text-sm font-medium mb-4">{error}</p>

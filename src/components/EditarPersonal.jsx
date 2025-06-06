@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { editarPersonal } from "../axios/personal/personal";
 import useMostrarContraseña from "../hooks/useMostrarContraseña";
@@ -35,7 +35,7 @@ export default function EditarPersonal({
         }, 3000);
         setTimeout(() => {
           window.location.reload();
-        }, 4000);
+        }, 3000);
       }
     } catch (error) {
       console.error("Error al editar los datos de la persona:", error);
@@ -45,7 +45,7 @@ export default function EditarPersonal({
 
   return (
     <>
-      <div className="w-100 border border-gray-300 rounded-lg bg-white shadow-md m-2">
+      <div className="w-100 rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between  bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Editar Datos de la Persona</h2>
           <button

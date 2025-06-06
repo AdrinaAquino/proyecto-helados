@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TablaPersonal from "../components/TablaPersonal";
 import { listapersonal, listaSucursales } from "../axios/personal/personal";
 import AgregarPersonal from "../components/AgregarPersonal";
 
 export default function Personal() {
+  const [sucursalSeleccionada, setSucursalSeleccionada] = useState(null);
   const [modalNuevoPersonal, setModalNuevoPersonal] = useState(false);
   const [dataSucursales, setDataSucursales] = useState([]);
   const [dataPersonal, setDataPersonal] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,6 +28,10 @@ export default function Personal() {
 
     fetchData();
   }, []);
+  const personalFiltrado = sucursalSeleccionada
+    ? dataPersonal.filter((p) => p.id_sucursal === sucursalSeleccionada)
+    : dataPersonal;
+
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">Administración de Personal</h1>
@@ -39,10 +45,25 @@ export default function Personal() {
             <h2 className="text-xl font-semibold mb-2">
               Seleccione una Sucursal
             </h2>
+            <button
+              className={`m-2 px-4 py-2 rounded-md cursor-pointer ${
+                sucursalSeleccionada === null
+                  ? "bg-purple-900 text-white font-bold"
+                  : "bg-[#9c2bf9] text-white hover:bg-[#a45bb0]"
+              }`}
+              onClick={() => setSucursalSeleccionada(null)}
+            >
+              Todos
+            </button>
             {dataSucursales.map((sucursal, index) => (
               <button
                 key={index}
-                className="bg-[#9c2bf9] text-white m-2 px-4 py-2 rounded-md hover:bg-[#a45bb0] cursor-pointer"
+                className={`m-2 px-4 py-2 rounded-md cursor-pointer ${
+                  sucursalSeleccionada === sucursal.id_sucursal
+                    ? "bg-purple-900 text-white font-bold"
+                    : "bg-[#9c2bf9] text-white hover:bg-[#a45bb0]"
+                }`}
+                onClick={() => setSucursalSeleccionada(sucursal.id_sucursal)}
               >
                 <span>{sucursal.nombre}</span>
               </button>
@@ -53,7 +74,12 @@ export default function Personal() {
       <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
         <div className=" md:flex justify-between items-center">
           <h2 className="text-xl font-semibold mb-2">
-            Personal de Sucursal Sur
+            Personal de{" "}
+            {sucursalSeleccionada
+              ? dataSucursales.find(
+                  (s) => s.id_sucursal === sucursalSeleccionada
+                )?.nombre
+              : "todas las sucursales"}
           </h2>
           <button
             className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600"
@@ -69,7 +95,7 @@ export default function Personal() {
           </p>
         ) : (
           <TablaPersonal
-            dataPersonal={dataPersonal}
+            dataPersonal={personalFiltrado}
             dataSucursales={dataSucursales}
           />
         )}

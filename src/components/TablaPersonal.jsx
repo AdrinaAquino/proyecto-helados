@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { eliminarPersonal } from "../axios/personal/personal";
 import ModalConfirmacion from "./ModalConfirmacion";
 import VerPersonal from "./VerPersonal";

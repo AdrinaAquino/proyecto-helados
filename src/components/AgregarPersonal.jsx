@@ -22,17 +22,17 @@ export default function AgregarPersonal({
         }, 3000);
         setTimeout(() => {
           window.location.reload();
-        }, 4000);
+        }, 3000);
       }
     } catch (error) {
-      console.error("Error al crear los datos de la persona:", error);
+      console.error("Error al crear personal:", error);
       mostrarAlerta("error", "Error al Crear Personal");
     }
   }
 
   return (
     <>
-      <div className="w-100 border border-gray-300 rounded-lg bg-white shadow-md m-2">
+      <div className="w-100 rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Crear Datos de la Persona</h2>
           <button

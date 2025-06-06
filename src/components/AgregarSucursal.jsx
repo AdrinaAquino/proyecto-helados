@@ -18,16 +18,16 @@ export default function AgregarSucursal({ setModalNuevoSucursal }) {
         }, 3000);
         setTimeout(() => {
           window.location.reload();
-        }, 4000);
+        }, 3000);
       }
     } catch (error) {
-      console.error("Error eliminando sucursal:", error);
+      console.error("Error al Crear sucursal:", error);
       mostrarAlerta("error", "Error al Crear Sucursal");
     }
   }
   return (
     <>
-      <div className="w-100 border border-gray-300 rounded-lg bg-white shadow-md m-2">
+      <div className="w-100  rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between items-center bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Nueva Sucursal</h2>
           <button
