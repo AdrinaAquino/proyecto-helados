@@ -12,6 +12,7 @@ import Inventarios from "./pages/Inventarios";
 import Predicciones from "./pages/Predicciones";
 import Unauthorized from "./pages/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
+import Reportes from "./pages/Reportes";
 
 function DashboardLayout() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -62,8 +63,13 @@ export default function App() {
         <Route element={<PrivateRoute allowedRoles={[1]} />}>
           <Route path="/inventarios" element={<Inventarios />} />
         </Route>
+
         <Route element={<PrivateRoute allowedRoles={[1]} />}>
           <Route path="/pedidos" element={<Pedidos />} />
+        </Route>
+
+        <Route element={<PrivateRoute allowedRoles={[1]} />}>
+          <Route path="/reportes" element={<Reportes />} />
         </Route>
 
         <Route element={<PrivateRoute allowedRoles={[1]} />}>

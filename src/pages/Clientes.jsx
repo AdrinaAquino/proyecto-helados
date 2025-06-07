@@ -18,7 +18,7 @@ export default function Clientes() {
       <div className=" py-4 md:flex justify-between items-center">
         <h2 className="text-2xl font-bold mb-4">Administración de Clientes</h2>
         <button
-          className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600"
+          className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600 hover:scale-103"
           onClick={() => setModalNuevoCliente(true)}
         >
           <strong className="text-xl">+</strong> Nuevo Cliente

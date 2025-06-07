@@ -75,10 +75,9 @@ export default function TablaProductosMateriasPrimas({ data }) {
                     <td className="py-2 px-4 ">{materiaprima.nombre}</td>
                     <td className="py-2 px-4">
                       {materiaprima.precio_unitario}
+                      {" Bs"}
                     </td>
-                    <td className="py-2 px-4">
-                      {materiaprima.unidad} {"Bs"}
-                    </td>
+                    <td className="py-2 px-4">{materiaprima.unidad}</td>
                     <td className="py-2 px-4">{materiaprima.stock_minimo}</td>
                     <td className="py-2 px-4">
                       {materiaprima.fecha_caducidad}
@@ -86,7 +85,7 @@ export default function TablaProductosMateriasPrimas({ data }) {
                     <td className="py-2 px-4">
                       <div className="flex justify-center space-x-2">
                         <button
-                          className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 cursor-pointer hover:text-black"
+                          className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 cursor-pointer hover:text-black hover:scale-110"
                           onClick={() => setMateriaPrimaVer(materiaprima)}
                         >
                           <svg
@@ -110,7 +109,7 @@ export default function TablaProductosMateriasPrimas({ data }) {
                           </svg>
                         </button>
                         <button
-                          className="bg-orange-400 text-white px-3 py-1 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black"
+                          className="bg-orange-400 text-white px-3 py-1 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black hover:scale-110"
                           onClick={() => setMateriaPrimaEditar(materiaprima)}
                         >
                           <svg
@@ -129,7 +128,7 @@ export default function TablaProductosMateriasPrimas({ data }) {
                           </svg>
                         </button>
                         <button
-                          className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 cursor-pointer hover:text-black"
+                          className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 cursor-pointer hover:text-black hover:scale-110"
                           onClick={() => setMateriaPrimaEliminar(materiaprima)}
                         >
                           <svg

@@ -46,9 +46,9 @@ export default function Personal() {
               Seleccione una Sucursal
             </h2>
             <button
-              className={`m-2 px-4 py-2 rounded-md cursor-pointer ${
+              className={`m-2 px-4 py-2 rounded-md cursor-pointer transition-all duration-200 hover:scale-105 ${
                 sucursalSeleccionada === null
-                  ? "bg-purple-900 text-white font-bold"
+                  ? "bg-purple-900 text-white font-bold scale-100 ring-4 ring-indigo-300"
                   : "bg-[#9c2bf9] text-white hover:bg-[#a45bb0]"
               }`}
               onClick={() => setSucursalSeleccionada(null)}
@@ -58,9 +58,9 @@ export default function Personal() {
             {dataSucursales.map((sucursal, index) => (
               <button
                 key={index}
-                className={`m-2 px-4 py-2 rounded-md cursor-pointer ${
+                className={`m-2 px-4 py-2 rounded-md cursor-pointer transition-all duration-200 hover:scale-105 ${
                   sucursalSeleccionada === sucursal.id_sucursal
-                    ? "bg-purple-900 text-white font-bold"
+                    ? "bg-purple-900 text-white font-bold scale-100 ring-4 ring-indigo-300"
                     : "bg-[#9c2bf9] text-white hover:bg-[#a45bb0]"
                 }`}
                 onClick={() => setSucursalSeleccionada(sucursal.id_sucursal)}
@@ -82,7 +82,7 @@ export default function Personal() {
               : "todas las sucursales"}
           </h2>
           <button
-            className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600"
+            className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600 hover:scale-103"
             onClick={() => setModalNuevoPersonal(true)}
           >
             <strong className="text-xl">+</strong> Nueva Personal

@@ -86,7 +86,7 @@ export default function TablaProductosEstablecidos({ data }) {
                     <td className="py-2 px-4">
                       <div className="flex justify-center space-x-2">
                         <button
-                          className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 cursor-pointer hover:text-black"
+                          className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 cursor-pointer hover:text-black hover:scale-110"
                           onClick={() =>
                             setProductoEstablecidoVer(productoestablecido)
                           }
@@ -112,7 +112,7 @@ export default function TablaProductosEstablecidos({ data }) {
                           </svg>
                         </button>
                         <button
-                          className="bg-orange-400 text-white px-3 py-1 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black"
+                          className="bg-orange-400 text-white px-3 py-1 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black hover:scale-110"
                           onClick={() =>
                             setProductoEstablecidoEditar(productoestablecido)
                           }
@@ -133,7 +133,7 @@ export default function TablaProductosEstablecidos({ data }) {
                           </svg>
                         </button>
                         <button
-                          className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 cursor-pointer hover:text-black"
+                          className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 cursor-pointer hover:text-black hover:scale-110"
                           onClick={() =>
                             setProductoEstablecidoEliminar(productoestablecido)
                           }

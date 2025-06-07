@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Aside({ openMenu }) {
+  const location = useLocation();
   return (
     <aside
       className={`${
@@ -10,49 +11,87 @@ export default function Aside({ openMenu }) {
       <nav className="space-y-2 flex flex-col">
         <Link
           to="/sucursales"
-          className="px-3 py-2 rounded-md hover:bg-slate-700 transition"
+          className={`px-3 py-2 rounded-md transition ${
+            location.pathname === "/sucursales"
+              ? "bg-purple-900 text-white font-bold"
+              : "hover:bg-slate-700 text-white"
+          }`}
         >
           Sucursales
         </Link>
 
         <Link
           to="/personal"
-          className="px-3 py-2 rounded-md hover:bg-slate-700 transition"
+          className={`px-3 py-2 rounded-md transition ${
+            location.pathname === "/personal"
+              ? "bg-purple-900 text-white font-bold"
+              : "hover:bg-slate-700 text-white"
+          }`}
         >
           Personal
         </Link>
 
         <Link
           to="/clientes"
-          className="px-3 py-2 rounded-md hover:bg-slate-700 transition"
+          className={`px-3 py-2 rounded-md transition ${
+            location.pathname === "/clientes"
+              ? "bg-purple-900 text-white font-bold"
+              : "hover:bg-slate-700 text-white"
+          }`}
         >
           Clientes
         </Link>
 
         <Link
           to="/productos"
-          className="px-3 py-2 rounded-md hover:bg-slate-700 transition"
+          className={`px-3 py-2 rounded-md transition ${
+            location.pathname === "/productos"
+              ? "bg-purple-900 text-white font-bold"
+              : "hover:bg-slate-700 text-white"
+          }`}
         >
           Productos
         </Link>
 
         <Link
           to="/inventarios"
-          className="px-3 py-2 rounded-md hover:bg-slate-700 transition"
+          className={`px-3 py-2 rounded-md transition ${
+            location.pathname === "/inventarios"
+              ? "bg-purple-900 text-white font-bold"
+              : "hover:bg-slate-700 text-white"
+          }`}
         >
           Inventarios
         </Link>
 
         <Link
           to="/pedidos"
-          className="px-3 py-2 rounded-md hover:bg-slate-700 transition"
+          className={`px-3 py-2 rounded-md transition ${
+            location.pathname === "/pedidos"
+              ? "bg-purple-900 text-white font-bold"
+              : "hover:bg-slate-700 text-white"
+          }`}
         >
           Pedidos
+        </Link>
+        <Link
+          to="/reportes"
+          className={`px-3 py-2 rounded-md transition ${
+            location.pathname === "/reportes"
+              ? "bg-purple-900 text-white font-bold"
+              : "hover:bg-slate-700 text-white"
+          }`}
+        >
+          Reportes
         </Link>
 
         <Link
           to="/predicciones"
-          className="px-3 py-2 rounded-md hover:bg-slate-700 transition"
+          className={`px-3 py-2 rounded-md transition ${
+            location.pathname === "/predicciones"
+              ? "bg-purple-900 text-white font-bold"
+              : "hover:bg-slate-700 text-white"
+          }`}
         >
           Predicciones
         </Link>

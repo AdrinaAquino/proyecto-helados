@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function AgregarMateriaPrima() {
+export default function TablaPedidos() {
   return <div></div>;
 }

@@ -1,5 +1,47 @@
 import React from "react";
 
-export default function VerMateriaPrima() {
-  return <div></div>;
+export default function VerMateriaPrima({ setModalAbierto, materiaprima }) {
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-[#aea7b46d] z-50">
+      <div className="bg-white rounded-lg overflow-hidden w-full max-w-md shadow-xl relative">
+        <div className="flex justify-between items-center bg-[#89408d] text-white p-3">
+          <h2 className="text-xl font-bold">Detalles de Materia Prima</h2>
+          <button
+            onClick={() => setModalAbierto(null)}
+            className=" text-white hover:font-bold w-7 h-7 bg-red-600 rounded-full cursor-pointer"
+          >
+            X
+          </button>
+        </div>
+        <div className="space-y-2 p-6">
+          <p>
+            <span className="font-semibold">Producto:</span>{" "}
+            {materiaprima.nombre}
+          </p>
+          <p>
+            <span className="font-semibold">Precio:</span>
+
+            {materiaprima.precio_unitario}
+            {" Bs"}
+          </p>
+          <p>
+            <span className="font-semibold">Unidades:</span>{" "}
+            {materiaprima.unidad}
+          </p>
+          <p>
+            <span className="font-semibold">Stock Minimo:</span>{" "}
+            {materiaprima.stock_minimo}
+          </p>
+          <p>
+            <span className="font-semibold">Fecha de Caducidad:</span>{" "}
+            {materiaprima.fecha_caducidad}
+          </p>
+          <p>
+            <span className="font-semibold">Id del Producto:</span>{" "}
+            {materiaprima.id_materia_prima}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }

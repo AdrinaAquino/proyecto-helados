@@ -31,7 +31,7 @@ export default function AgregarSucursal({ setModalNuevoSucursal }) {
         <div className="flex justify-between items-center bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Nueva Sucursal</h2>
           <button
-            className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
+            className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer "
             onClick={() => setModalNuevoSucursal(false)}
           >
             X

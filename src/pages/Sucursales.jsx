@@ -20,7 +20,7 @@ export default function Sucursales() {
           Administración de Sucursales
         </h2>
         <button
-          className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600"
+          className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600 hover:scale-103"
           onClick={() => setModalNuevoSucursal(true)}
         >
           <strong className="text-xl">+</strong> Nueva Sucursal
@@ -36,7 +36,7 @@ export default function Sucursales() {
         )}
       </div>
       {modalNuevoSucursal && (
-        <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+        <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center ">
           <AgregarSucursal setModalNuevoSucursal={setModalNuevoSucursal} />
         </div>
       )}
