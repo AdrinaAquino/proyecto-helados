@@ -67,6 +67,7 @@ export default function AgregarProductoEstablecido({
           </label>
           <input
             type="number"
+            step="any"
             {...register("precio_unitario")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
@@ -88,7 +89,7 @@ export default function AgregarProductoEstablecido({
               type="submit"
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer"
             >
-              Guardar Cambios
+              Guardar
             </button>
           </div>
         </form>

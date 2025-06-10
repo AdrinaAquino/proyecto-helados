@@ -11,7 +11,7 @@ export default function Productos() {
     useState(false);
   const [modalNuevoMateriaPrima, setModalNuevoMateriaPrima] = useState(false);
   const [data, setData] = useState([]);
-  const [dataMateriaPrima, setMateriaPrima] = useState([]);
+  const [dataMateriaPrima, setDataMateriaPrima] = useState([]);
   const [loadingEstablecidos, setLoadingEstablecidos] = useState(true);
   const [loadingMaterias, setLoadingMaterias] = useState(true);
   const [tablaVisible, setTablaVisible] = useState("establecidos");
@@ -25,7 +25,7 @@ export default function Productos() {
 
   useEffect(() => {
     listaMateriasPrimas()
-      .then((rs) => setMateriaPrima(rs))
+      .then((rs) => setDataMateriaPrima(rs))
       .catch((error) => console.error(error))
       .finally(() => setLoadingMaterias(false));
   }, []);
@@ -68,7 +68,7 @@ export default function Productos() {
               className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600 hover:scale-103"
               onClick={() => setModalNuevoProductoEstablecido(true)}
             >
-              <strong className="text-xl">+</strong> Nueva Producto Establecido
+              <strong className="text-xl">+</strong> Nuevo Producto Establecido
             </button>
           </div>
           {loadingEstablecidos ? (

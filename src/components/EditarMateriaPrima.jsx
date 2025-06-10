@@ -89,6 +89,7 @@ export default function EditarMateriaPrima({ setModalAbierto, materiaprima }) {
           <label className="block text-sm font-medium mb-2">Stock Minimo</label>
           <input
             type="number"
+            step="any"
             {...register("stock_minimo")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]

@@ -22,14 +22,18 @@ export default function AgregarCliente({ setModalNuevoCliente }) {
       }
     } catch (error) {
       console.error("Error al Crear cliente:", error);
-      mostrarAlerta("error", "Error al Crear Cliente");
+      if (error.response && error.response.status === 400) {
+        mostrarAlerta("error", "El Cliente ya Existe.");
+      } else {
+        mostrarAlerta("error", "Error Crear Cliente");
+      }
     }
   }
   return (
     <>
       <div className="w-100 rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between items-center bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
-          <h2>Nueva Cliente</h2>
+          <h2>Nuevo Cliente</h2>
           <button
             className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
             onClick={() => setModalNuevoCliente(false)}
@@ -61,7 +65,7 @@ export default function AgregarCliente({ setModalNuevoCliente }) {
 
           <div className="flex justify-end mt-4" typeof="submit">
             <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer">
-              Guardar Cliente
+              Guardar
             </button>
           </div>
         </form>

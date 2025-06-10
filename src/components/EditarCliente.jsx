@@ -69,7 +69,7 @@ export default function EditarCliente({ setModalAbierto, cliente }) {
 
           <div className="flex justify-end mt-4" typeof="submit">
             <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer">
-              Guardar Cliente
+              Guardar Cambios
             </button>
           </div>
         </form>

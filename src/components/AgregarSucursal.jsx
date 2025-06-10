@@ -94,7 +94,7 @@ focus:ring-2 focus:ring-[#89408d]"
           />
           <div className="flex justify-end mt-4" typeof="submit">
             <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer">
-              Guardar Sucursal
+              Guardar
             </button>
           </div>
         </form>

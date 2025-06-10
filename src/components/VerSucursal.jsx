@@ -30,6 +30,10 @@ export default function VerSucursal({ setSucursalVer, sucursal }) {
             <span className="font-semibold">Horario de Cierre:</span>{" "}
             {sucursal.horario_cierre}
           </p>
+          <p>
+            <span className="font-semibold">Id Sucursal:</span>{" "}
+            {sucursal.id_sucursal}
+          </p>
         </div>
       </div>
     </div>

@@ -30,10 +30,10 @@ export default function AgregarMateriaPrima({ setModalNuevoMateriaPrima }) {
     <>
       <div className="w-100 rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between  bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
-          <h2>Editar Materia Prima</h2>
+          <h2>Agregar Materia Prima</h2>
           <button
             className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
-            onClick={() => setModalAbierto(false)}
+            onClick={() => setModalNuevoMateriaPrima(false)}
           >
             X
           </button>
@@ -55,6 +55,7 @@ export default function AgregarMateriaPrima({ setModalNuevoMateriaPrima }) {
           </label>
           <input
             type="number"
+            step="any"
             {...register("precio_unitario")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
@@ -75,6 +76,7 @@ export default function AgregarMateriaPrima({ setModalNuevoMateriaPrima }) {
           <label className="block text-sm font-medium mb-2">Stock Minimo</label>
           <input
             type="number"
+            step="any"
             {...register("stock_minimo")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
@@ -99,7 +101,7 @@ export default function AgregarMateriaPrima({ setModalNuevoMateriaPrima }) {
               type="submit"
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer"
             >
-              Guardar Cambios
+              Guardar
             </button>
           </div>
         </form>

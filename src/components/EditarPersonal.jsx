@@ -46,7 +46,7 @@ export default function EditarPersonal({
   return (
     <>
       <div className="w-100 rounded-lg bg-white shadow-md m-2">
-        <div className="flex justify-between  bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
+        <div className="flex justify-between  bg-[#89408d] rounded-t-lg md:text-xl text-white font-bold p-2">
           <h2>Editar Datos de la Persona</h2>
           <button
             className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"

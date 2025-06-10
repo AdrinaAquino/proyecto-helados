@@ -34,7 +34,7 @@ export default function AgregarPersonal({
     <>
       <div className="w-100 rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
-          <h2>Crear Datos de la Persona</h2>
+          <h2>Crear Personal</h2>
           <button
             className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
             onClick={() => setModalNuevoPersonal(false)}
@@ -156,7 +156,7 @@ export default function AgregarPersonal({
               type="submit"
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer"
             >
-              Guardar Cambios
+              Guardar
             </button>
           </div>
         </form>

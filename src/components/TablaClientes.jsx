@@ -43,7 +43,6 @@ export default function TablaClientes({ data }) {
               <tr>
                 <th className="py-2 px-4 ">CI o NIT</th>
                 <th className="py-2 px-4">Apellido</th>
-                <th className="py-2 px-4">Id_cliente</th>
                 <th className="py-2 px-4">Opciones</th>
               </tr>
             </thead>
@@ -53,7 +52,7 @@ export default function TablaClientes({ data }) {
                   <tr className="border-b border-gray-200 hover:bg-gray-100 text-center">
                     <td className="py-2 px-4 ">{cliente.ci_nit}</td>
                     <td className="py-2 px-4">{cliente.apellido}</td>
-                    <td className="py-2 px-4">{cliente.id_cliente}</td>
+
                     <td className="py-2 px-4">
                       <div className="flex justify-center space-x-2">
                         <button
