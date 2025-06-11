@@ -144,7 +144,7 @@ export default function AgregarPersonal({
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
     focus:ring-2 focus:ring-[#89408d] cursor-pointer"
           >
-            <option value="">Todas</option>
+            <option value=" ">Todas</option>
             {sucursales.map((sucursal) => (
               <option key={sucursal.id_sucursal} value={sucursal.id_sucursal}>
                 {sucursal.nombre}
