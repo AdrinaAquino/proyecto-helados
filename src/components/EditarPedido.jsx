@@ -38,7 +38,7 @@ export default function EditarPedido({ setModalAbierto, pedido }) {
     <>
       <div className="w-100 rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between  bg-[#89408d] rounded-t-lg md:text-xl text-white font-bold p-2">
-          <h2>Editar Datos de la Persona</h2>
+          <h2>Editar Pedido</h2>
           <button
             className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
             onClick={() => setModalAbierto(false)}
@@ -49,25 +49,28 @@ export default function EditarPedido({ setModalAbierto, pedido }) {
 
         <form className="p-4 space-y-4" onSubmit={handleSubmit(handleEdit)}>
           <label className="block text-sm font-medium mb-2">Estado:</label>
-          <input
-            type="text"
+          <select
             {...register("estado")}
             required
-            className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d]"
-            placeholder="Escriba el Estado"
-          />
+            className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+          >
+            <option value="Pagado">Pagado</option>
+            <option value="Pendiente">Pendiente</option>
+          </select>
           <label className="block text-sm font-medium mb-2">
             Metodo de Pago:
           </label>
-          <input
-            type="text"
+          <select
             {...register("metodo_pago")}
             required
-            className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d]"
-            placeholder="Escriba el metodo de pago "
-          />
+            className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+          >
+            <option value="Efectivo">Efectivo</option>
+            <option value="Tarjeta_credito">Tarjeta de crédito</option>
+            <option value="Transferencia_bancaria">
+              Transferencia Bancaria
+            </option>
+          </select>
 
           <div className="flex justify-end mt-4">
             <button

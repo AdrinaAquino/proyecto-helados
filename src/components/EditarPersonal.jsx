@@ -27,6 +27,9 @@ export default function EditarPersonal({
   }, [personal, reset]);
   async function handleEdit(requestData) {
     try {
+      if (requestData.id_sucursal === "todas") {
+        requestData.id_sucursal = null;
+      }
       const status = await editarPersonal(requestData, personal.id_personal);
       if (status === 200) {
         mostrarAlerta("exito", "Personal Editado con Éxito");
@@ -155,7 +158,7 @@ export default function EditarPersonal({
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
   focus:ring-2 focus:ring-[#89408d]"
           >
-            <option value=" ">Todas</option>
+            <option value="todas">Todas</option>
             {sucursales.map((sucursal) => (
               <option key={sucursal.id_sucursal} value={sucursal.id_sucursal}>
                 {sucursal.nombre}

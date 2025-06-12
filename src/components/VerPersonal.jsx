@@ -43,6 +43,10 @@ export default function VerPersonal({
                 ? "Nunca"
                 : new Date(personal.fecha_ultimo_login).toLocaleString()}
             </p>
+            <p>
+              <span className="font-semibold">Id Personal:</span>{" "}
+              {personal.id_personal}
+            </p>
           </div>
         </div>
       </div>

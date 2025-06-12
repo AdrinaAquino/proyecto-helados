@@ -52,7 +52,7 @@ export default function TablaPedidos({ pedidos }) {
                     <td className="py-2 px-4">
                       <span>
                         {pedido.detalles?.[0]?.nombre_producto ||
-                          "Sin producto"}
+                          "Personalizado"}
                       </span>
                     </td>
                     <td className="py-2 px-4">

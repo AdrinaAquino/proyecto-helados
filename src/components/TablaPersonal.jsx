@@ -35,7 +35,8 @@ export default function TablaPersonal({ dataPersonal, dataSucursales }) {
   };
   const obtenerNombreSucursal = (id) => {
     const sucursal = dataSucursales?.find((s) => s.id_sucursal === id);
-    return sucursal ? sucursal.nombre : "Desconocida";
+
+    return sucursal ? sucursal.nombre : "Todas";
   };
 
   const personalFiltrados = dataPersonal.filter((personal) => {

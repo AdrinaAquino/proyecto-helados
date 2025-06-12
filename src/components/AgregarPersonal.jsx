@@ -12,8 +12,12 @@ export default function AgregarPersonal({
   const { register, handleSubmit } = useForm();
   const { mostrar, toggleMostrar } = useMostrarContraseña();
   const { alerta, mostrarAlerta } = useModalAlerta();
+
   async function handleCrear(requestData) {
     try {
+      if (requestData.id_sucursal === "") {
+        requestData.id_sucursal = null;
+      }
       const status = await crearPersonal(requestData, personal.id_personal);
       if (status === 201) {
         mostrarAlerta("exito", "Personal Creado con Éxito");
@@ -140,11 +144,10 @@ export default function AgregarPersonal({
           <label className="block text-sm font-medium mb-2">Id_sucursal</label>
           <select
             {...register("id_sucursal")}
-            required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
     focus:ring-2 focus:ring-[#89408d] cursor-pointer"
           >
-            <option value=" ">Todas</option>
+            <option value="">Todas</option>
             {sucursales.map((sucursal) => (
               <option key={sucursal.id_sucursal} value={sucursal.id_sucursal}>
                 {sucursal.nombre}

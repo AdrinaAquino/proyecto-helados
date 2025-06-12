@@ -105,10 +105,11 @@ export default function Pedidos() {
           <TablaPedidos pedidos={dataPedido} />
         )}
         {modalNuevoPedido && (
-          <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+          <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center">
             <AgregarPedido
               setModalNuevoPedido={setModalNuevoPedido}
-              pedidos={dataPedido}
+              sucursalSeleccionada={sucursalSeleccionada}
+              sucursales={dataSucursales}
             />
           </div>
         )}

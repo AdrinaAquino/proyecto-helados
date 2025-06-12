@@ -24,7 +24,7 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
               {new Date(pedidos.fecha_pedido).toLocaleString()}
             </p>
             <p>
-              <span className="font-semibold">Personal que atendio:</span>{" "}
+              <span className="font-semibold">Personal que Atendio:</span>{" "}
               {pedidos.nombre_personal || "null"}
             </p>
             <p>
@@ -43,11 +43,11 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
               {pedidos.metodo_pago}
             </p>
             <p>
-              <span className="font-semibold">Tipo de producto:</span>{" "}
+              <span className="font-semibold">Tipo de Producto:</span>{" "}
               {pedidos.detalles?.[0]?.tipo_producto || "Sin producto"}
             </p>
             <p>
-              <span className="font-semibold">Nombre del producto:</span>{" "}
+              <span className="font-semibold">Nombre del Producto:</span>{" "}
               {pedidos.detalles?.[0]?.nombre_producto || "S/N"}
             </p>
             <p>
@@ -63,8 +63,7 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
               {pedidos.detalles?.[0]?.subtotal}
             </p>
             <p>
-              <span className="font-semibold">Total a Cancelar:</span>{" "}
-              {pedidos.total}
+              <span className="font-semibold">Total:</span> {pedidos.total}
             </p>
           </div>
         </div>
