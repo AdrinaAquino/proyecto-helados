@@ -3,14 +3,15 @@ import {
   crearCliente,
   crearPedido,
   listaClientes,
-  listaMateriasPrimas,
+  listaInventarioProductosEstablecidos,
+  listaInventariosMateriasPrimas,
   listaPersonal,
-  listaProductosEstablecidos,
 } from "../axios/pedidos/pedidos";
 import { useForm } from "react-hook-form";
 import { useModalAlerta } from "../hooks/useModalAlerta";
 import ModalAlerta from "./ModalAlerta";
 import { useFieldArray } from "react-hook-form";
+import DetallePedido from "./DetallePedido";
 
 export default function AgregarPedido({
   setModalNuevoPedido,
@@ -22,7 +23,6 @@ export default function AgregarPedido({
   const { alerta, mostrarAlerta } = useModalAlerta();
   const [dataPersonal, setDataPersonal] = useState([]);
   const [dataClientes, setDataClientes] = useState([]);
-  const [datacrearCliente, setDataCrearCliente] = useState([]);
   const [dataProductosEstablecidos, setDataProductosEstablecidos] = useState(
     []
   );
@@ -42,12 +42,23 @@ export default function AgregarPedido({
   }, [sucursalSeleccionada, reset]);
 
   useEffect(() => {
+    if (sucursalSeleccionada) {
+      reset({
+        id_sucursal: sucursalSeleccionada,
+      });
+
+      listaInventarioProductosEstablecidos(sucursalSeleccionada)
+        .then(setDataProductosEstablecidos)
+        .catch(console.error);
+
+      listaInventariosMateriasPrimas(sucursalSeleccionada)
+        .then(setDataMateriasPrimas)
+        .catch(console.error);
+    }
+  }, [sucursalSeleccionada, reset]);
+  useEffect(() => {
     listaPersonal().then(setDataPersonal).catch(console.error);
     listaClientes().then(setDataClientes).catch(console.error);
-    listaProductosEstablecidos()
-      .then(setDataProductosEstablecidos)
-      .catch(console.error);
-    listaMateriasPrimas().then(setDataMateriasPrimas).catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -77,9 +88,18 @@ export default function AgregarPedido({
 
   async function crearClienteNuevo(ci_nit, apellido) {
     try {
-      const nuevoCliente = await crearCliente({ ci_nit, apellido });
-      return nuevoCliente.id_cliente;
+      const nuevoCliente = await crearCliente({
+        ci_nit: String(ci_nit),
+        apellido: String(apellido),
+      });
+      if (nuevoCliente?.id_cliente) {
+        mostrarAlerta("exito", "Cliente Creado con Éxito");
+        return nuevoCliente.id_cliente;
+      } else {
+        throw new Error("Respuesta inesperada al crear cliente");
+      }
     } catch (error) {
+      console.log(ci_nit, apellido);
       console.error("Error creando cliente:", error);
       mostrarAlerta("error", "Error creando cliente");
       return null;
@@ -88,13 +108,25 @@ export default function AgregarPedido({
 
   async function handleCrear(formData) {
     try {
-      let idClienteFinal = clienteSeleccionado?.id_cliente;
-      const ci_nit = busquedaCliente.trim() || null;
-      const apellido = apellidoInput.trim() || null;
+      let idClienteFinal = clienteSeleccionado?.id_cliente || null;
+      const ci_nit = busquedaCliente.trim();
+      const apellido = apellidoInput.trim();
 
-      if (!idClienteFinal) {
+      if (!idClienteFinal && ci_nit && apellido) {
         idClienteFinal = await crearClienteNuevo(ci_nit, apellido);
         if (!idClienteFinal) return;
+      }
+
+      if (!idClienteFinal && !ci_nit && !apellido) {
+        idClienteFinal = null;
+      }
+
+      if (!idClienteFinal && !!ci_nit !== !!apellido) {
+        mostrarAlerta(
+          "error",
+          "Debe proporcionar CI/NIT y apellido para registrar un cliente."
+        );
+        return;
       }
 
       const requestData = {
@@ -129,26 +161,30 @@ export default function AgregarPedido({
 
         return limpio;
       });
-      console.log("Objeto que se envía al backend:", requestData);
+
       const status = await crearPedido(requestData);
       if (status === 201) {
         mostrarAlerta("exito", "Pedido Creado con Éxito");
         setTimeout(() => {
           setModalNuevoPedido(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
-      console.error("Error al crear pedido:", error);
-      mostrarAlerta("error", "Error al Crear Pedido");
+      const status = error?.response?.status;
+      if (status === 400) {
+        mostrarAlerta("error", "Stock insuficiente para el producto");
+      } else {
+        console.error("Error al crear pedido:", error);
+        mostrarAlerta("error", "Error al Crear Pedido");
+      }
     }
   }
-
   return (
     <>
-      <div className="w-100 md:w-130 rounded-lg bg-white shadow-md m-2">
+      <div className="w-100 md:w-170 rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Crear Pedido</h2>
           <button
@@ -159,7 +195,10 @@ export default function AgregarPedido({
           </button>
         </div>
 
-        <form className="p-4 space-y-4" onSubmit={handleSubmit(handleCrear)}>
+        <form
+          className="max-h-[70vh] overflow-y-auto p-4 space-y-4"
+          onSubmit={handleSubmit(handleCrear)}
+        >
           <label className="block text-sm font-medium mb-2">
             Nombre Sucursal:
           </label>
@@ -251,6 +290,33 @@ export default function AgregarPedido({
             />
           </div>
 
+          {!clienteSeleccionado &&
+            busquedaCliente.trim() &&
+            apellidoInput.trim() && (
+              <button
+                type="button"
+                onClick={async () => {
+                  const nuevoId = await crearClienteNuevo(
+                    busquedaCliente,
+                    apellidoInput
+                  );
+                  if (nuevoId) {
+                    const clienteCreado = {
+                      id_cliente: nuevoId,
+                      ci_nit: busquedaCliente,
+                      apellido: apellidoInput,
+                    };
+                    setClienteSeleccionado(clienteCreado);
+                    setDataClientes([...dataClientes, clienteCreado]); // Actualizar la lista
+                    mostrarAlerta("exito", "Cliente creado y asignado");
+                  }
+                }}
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer"
+              >
+                Crear Cliente
+              </button>
+            )}
+
           <label className="block text-sm font-medium mb-2">
             Metodo de Pago:
           </label>
@@ -260,186 +326,23 @@ export default function AgregarPedido({
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
           >
             <option value="Efectivo">Efectivo</option>
-            <option value="Tarjeta_credito">Tarjeta de crédito</option>
-            <option value="Transferencia_bancaria">
-              Transferencia Bancaria:
-            </option>
+            <option value="Tarjeta">Tarjeta de crédito</option>
+            <option value="Transferencia">Transferencia Bancaria:</option>
           </select>
 
           <label className="block text-sm font-medium mb-2"></label>
           {/* Sección de detalles del pedido */}
-          {fields.map((item, index) => {
-            const tipo = watch(`detalles.${index}.tipo_producto`);
-            return (
-              <div key={index} className="border p-3 rounded mb-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-purple-700">
-                    Producto #{index + 1}
-                  </h3>
-                  <button
-                    type="button"
-                    className="text-red-500 text-sm"
-                    onClick={() => remove(index)}
-                  >
-                    Quitar
-                  </button>
-                </div>
-
-                {/* Tipo de producto */}
-                <label className="block mt-2 text-sm font-medium">
-                  Tipo de Producto
-                </label>
-                <select
-                  {...register(`detalles.${index}.tipo_producto`)}
-                  className="border border-gray-300 p-2 w-full rounded"
-                  required
-                >
-                  <option value="">Seleccione tipo</option>
-                  <option value="Establecido">Establecido</option>
-                  <option value="Personalizado">Personalizado</option>
-                </select>
-
-                {/* Producto establecido */}
-                {tipo === "Establecido" && (
-                  <>
-                    <label className="block mt-2 text-sm font-medium">
-                      Producto Establecido
-                    </label>
-                    <select
-                      {...register(
-                        `detalles.${index}.id_producto_establecido`,
-                        { valueAsNumber: true }
-                      )}
-                      className="border border-gray-300 p-2 w-full rounded"
-                      required
-                    >
-                      <option value="">Seleccione un producto</option>
-                      {dataProductosEstablecidos.map((producto) => (
-                        <option
-                          key={producto.id_producto_establecido}
-                          value={producto.id_producto_establecido}
-                        >
-                          {producto.nombre}
-                        </option>
-                      ))}
-                    </select>
-                  </>
-                )}
-
-                {/* Producto personalizado */}
-                {tipo === "Personalizado" && (
-                  <div className="mt-2 p-2 bg-gray-100 rounded">
-                    <label className="block text-sm font-medium">
-                      Nombre del Producto Personalizado
-                    </label>
-                    <input
-                      type="text"
-                      {...register(
-                        `detalles.${index}.producto_personalizado.nombre_personalizado`
-                      )}
-                      className="border border-gray-300 p-2 w-full rounded"
-                      required
-                    />
-
-                    <label className="block mt-2 text-sm font-medium">
-                      Margen de Ganancia (Ej: 0.3)
-                    </label>
-                    <input
-                      type="number"
-                      step="0.01"
-                      {...register(
-                        `detalles.${index}.producto_personalizado.margen`
-                      )}
-                      className="border border-gray-300 p-2 w-full rounded"
-                      required
-                    />
-
-                    <label className="block mt-2 text-sm font-medium">
-                      Materias Primas
-                    </label>
-                    <div className="space-y-2">
-                      {dataMateriasPrimas.map((materia, mi) => (
-                        <div key={mi} className="flex gap-2 items-center">
-                          <input
-                            type="checkbox"
-                            onChange={(e) => {
-                              const checked = e.target.checked;
-                              const path = `detalles.${index}.producto_personalizado.detalles`;
-                              const current = getValues(path) || [];
-                              if (checked) {
-                                setValue(path, [
-                                  ...current,
-                                  {
-                                    id_materia_prima: materia.id_materia_prima,
-                                    cantidad: 0,
-                                  },
-                                ]);
-                              } else {
-                                setValue(
-                                  path,
-                                  current.filter(
-                                    (m) =>
-                                      m.id_materia_prima !==
-                                      materia.id_materia_prima
-                                  )
-                                );
-                              }
-                            }}
-                          />
-                          <span className="w-40">{materia.nombre}</span>
-                          <input
-                            type="number"
-                            placeholder="Cantidad"
-                            className="border p-1 rounded w-20"
-                            onChange={(e) => {
-                              const cantidad = parseFloat(e.target.value);
-                              const path = `detalles.${index}.producto_personalizado.detalles`;
-                              const current = getValues(path) || [];
-                              const updated = current.map((m) =>
-                                m.id_materia_prima === materia.id_materia_prima
-                                  ? { ...m, cantidad }
-                                  : m
-                              );
-                              setValue(path, updated);
-                            }}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Cantidad */}
-                <label className="block mt-2 text-sm font-medium">
-                  Cantidad
-                </label>
-                <input
-                  type="number"
-                  {...register(`detalles.${index}.cantidad`)}
-                  className="border border-gray-300 p-2 w-full rounded"
-                />
-              </div>
-            );
-          })}
-
-          <button
-            type="button"
-            onClick={() =>
-              append({
-                tipo_producto: "",
-                id_producto_establecido: "",
-                producto_personalizado: {
-                  nombre_personalizado: "",
-                  detalles: [],
-                  margen: 0,
-                },
-                cantidad: 1,
-              })
-            }
-            className="bg-violet-600 text-white px-3 py-1 rounded mb-4"
-          >
-            Agregar Producto
-          </button>
+          <DetallePedido
+            fields={fields}
+            append={append}
+            remove={remove}
+            register={register}
+            control={control}
+            getValues={getValues}
+            setValue={setValue}
+            dataProductosEstablecidos={dataProductosEstablecidos}
+            dataMateriasPrimas={dataMateriasPrimas}
+          />
 
           <div className="flex justify-end mt-4">
             <button

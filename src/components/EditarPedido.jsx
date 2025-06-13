@@ -66,10 +66,8 @@ export default function EditarPedido({ setModalAbierto, pedido }) {
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
           >
             <option value="Efectivo">Efectivo</option>
-            <option value="Tarjeta_credito">Tarjeta de crédito</option>
-            <option value="Transferencia_bancaria">
-              Transferencia Bancaria
-            </option>
+            <option value="Tarjeta">Tarjeta de crédito</option>
+            <option value="Transferencia">Transferencia Bancaria</option>
           </select>
 
           <div className="flex justify-end mt-4">

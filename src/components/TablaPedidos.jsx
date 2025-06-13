@@ -51,8 +51,14 @@ export default function TablaPedidos({ pedidos }) {
                     <td className="py-2 px-4">{pedido.id_pedido}</td>
                     <td className="py-2 px-4">
                       <span>
-                        {pedido.detalles?.[0]?.nombre_producto ||
-                          "Personalizado"}
+                        {pedido.detalles?.map((detalle, index) => (
+                          <div key={index}>
+                            {detalle.tipo_producto === "Establecido"
+                              ? detalle.nombre_producto
+                              : detalle.producto_personalizado
+                                  ?.nombre_personalizado}
+                          </div>
+                        ))}
                       </span>
                     </td>
                     <td className="py-2 px-4">
@@ -66,8 +72,8 @@ export default function TablaPedidos({ pedidos }) {
                       <span
                         className={
                           pedido.estado === "Pendiente"
-                            ? "text-red-600 font-bold"
-                            : "text-green-600 font-bold"
+                            ? "bg-red-100 text-red-800 font-semibold px-2 py-1 rounded"
+                            : "bg-green-100 text-green-800 font-semibold px-2 py-1 rounded"
                         }
                       >
                         {pedido.estado}
