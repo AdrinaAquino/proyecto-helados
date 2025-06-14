@@ -10,7 +10,6 @@ export default function AgregarSucursal({ setModalNuevoSucursal }) {
   async function handleCreate(data) {
     try {
       const status = await crearSucursal(data);
-      console.log(status);
       if (status === 201) {
         mostrarAlerta("exito", "Sucursal Creada con Éxito");
         setTimeout(() => {

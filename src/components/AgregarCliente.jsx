@@ -10,7 +10,6 @@ export default function AgregarCliente({ setModalNuevoCliente }) {
   async function handleCreate(data) {
     try {
       const status = await crearCliente(data);
-      console.log(status);
       if (status === 201) {
         mostrarAlerta("exito", "Cliente Creado con Éxito");
         setTimeout(() => {

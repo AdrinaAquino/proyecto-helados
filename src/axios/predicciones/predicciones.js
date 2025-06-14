@@ -20,15 +20,6 @@ export async function prediccionesDemanda(id_producto) {
   }
 }
 
-export async function prediccionesRiesgoStock() {
-  try {
-    const { data } = await instance.get("/predicciones/stock-riesgo");
-    return data;
-  } catch (error) {
-    throw error;
-  }
-}
-
 export async function listaProductosEstablecidos() {
   try {
     const { data } = await instance.get("/productos/establecidos");

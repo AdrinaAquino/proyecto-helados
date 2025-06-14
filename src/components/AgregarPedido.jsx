@@ -99,7 +99,6 @@ export default function AgregarPedido({
         throw new Error("Respuesta inesperada al crear cliente");
       }
     } catch (error) {
-      console.log(ci_nit, apellido);
       console.error("Error creando cliente:", error);
       mostrarAlerta("error", "Error creando cliente");
       return null;

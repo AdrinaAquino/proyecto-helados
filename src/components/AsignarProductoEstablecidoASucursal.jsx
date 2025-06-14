@@ -29,7 +29,6 @@ export default function AsignarProductoEstablecidoASucursal({
   async function handleCreate(data) {
     try {
       const status = await asignarInventarioProductoEstablecido(data);
-      console.log(status);
       if (status === 200) {
         mostrarAlerta("exito", "Se Asigno el Producto Establecido con Éxito");
         setTimeout(() => {

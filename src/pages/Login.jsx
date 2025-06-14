@@ -64,6 +64,7 @@ export default function Login() {
                 Contraseña
               </label>
               <input
+                id="password"
                 type={mostrar ? "text" : "password"}
                 name="password"
                 required

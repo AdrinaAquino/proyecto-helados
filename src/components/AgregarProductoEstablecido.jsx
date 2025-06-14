@@ -13,7 +13,6 @@ export default function AgregarProductoEstablecido({
   async function handleCreate(data) {
     try {
       const status = await crearProductoEstablecido(data);
-      console.log(status);
       if (status === 201) {
         mostrarAlerta("exito", "Producto Creado con Éxito");
         setTimeout(() => {

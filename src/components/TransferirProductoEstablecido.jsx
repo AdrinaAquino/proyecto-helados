@@ -43,7 +43,6 @@ export default function TransferirProductoEstablecido({
   async function handleTransferir(data) {
     try {
       const status = await transferirInventarioProductoEstablecido(data);
-      console.log(status);
       if (status === 200) {
         mostrarAlerta("exito", "Se Transfirio Producto Establecido con Éxito");
         setTimeout(() => {

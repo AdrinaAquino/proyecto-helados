@@ -26,7 +26,6 @@ export default function AsignarMateriaPrimaASucursal({
   async function handleCreate(data) {
     try {
       const status = await asignarInventarioMateriaPrima(data);
-      console.log(status);
       if (status === 200) {
         mostrarAlerta("exito", "Se Asigno Materia Prima con Éxito");
         setTimeout(() => {

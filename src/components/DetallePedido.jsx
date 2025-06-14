@@ -117,7 +117,10 @@ export default function DetallePedido({
                 </label>
                 <div className="space-y-2">
                   {dataMateriasPrimas.map((materia, mi) => (
-                    <div key={mi} className="flex gap-2 items-center">
+                    <div
+                      key={mi}
+                      className="flex gap-2 items-center border-b border-gray-400 pb-2 mb-2"
+                    >
                       <input
                         type="checkbox"
                         disabled={materia.cantidad_stock <= 0}

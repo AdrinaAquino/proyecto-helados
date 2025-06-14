@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   listaProductosEstablecidos,
   prediccionesDemanda,
-  prediccionesRiesgoStock,
   prediccionesTendencias,
 } from "../axios/predicciones/predicciones";
 import DashboardTendencia from "../components/DashboardTendencia";
@@ -11,11 +10,9 @@ export default function Predicciones() {
   const [dataTendencia, setDataTendencia] = useState([]);
   const [dataProductos, setDataProductos] = useState([]);
   const [dataDemanda, setDataDemanda] = useState(1);
-  const [dataRiesgoStock, setDataRiesgoStock] = useState([]);
   const [idProducto, setIdProducto] = useState(1);
   const [loadingTendencia, setLoadingTendencia] = useState(true);
   const [loadingDemanda, setLoadingDemanda] = useState(false);
-  const [loadingRiesgoStock, setLoadingRiesgoStock] = useState(true);
 
   useEffect(() => {
     setLoadingTendencia(true);
@@ -29,16 +26,6 @@ export default function Predicciones() {
     listaProductosEstablecidos()
       .then((rs) => setDataProductos(rs))
       .catch((error) => console.error(error));
-  }, []);
-
-  useEffect(() => {
-    setLoadingRiesgoStock(true);
-    prediccionesRiesgoStock()
-      .then((rs) => {
-        setDataRiesgoStock(rs);
-      })
-      .catch((error) => console.error(error))
-      .finally(() => setLoadingRiesgoStock(false));
   }, []);
 
   const obtenerPrediccionDemanda = () => {
@@ -115,34 +102,6 @@ export default function Predicciones() {
                 <p className="text-purple-700">No hay datos disponibles</p>
               )}
             </div>
-          )}
-        </div>
-        <div className="w-65 bg-purple-50 p-3 rounded-2xl shadow-md mt-10 border border-purple-200">
-          <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
-            Predecicciones de Riesgo de Stock
-          </h2>
-          {loadingRiesgoStock ? (
-            <p className="text-purple-700">Cargando...</p>
-          ) : dataRiesgoStock.length > 0 ? (
-            <ul className="space-y-4">
-              {dataRiesgoStock.map((item, index) => (
-                <li key={index} className="bg-white rounded-xl p-3 shadow-md ">
-                  <strong className="text-xl text-purple-900">
-                    {item.materia_prima}
-                  </strong>
-                  <p className="text-purple-700 mt-1">
-                    Dias Restantes: {item.dias_restantes}
-                  </p>
-                  <p className="text-purple-700 mt-1">
-                    Unidades: {item.unidad}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-purple-700 text-center">
-              No hay datos de riesgo de stock disponibles.
-            </p>
           )}
         </div>
       </div>
