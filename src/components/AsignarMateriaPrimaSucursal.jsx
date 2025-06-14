@@ -1,71 +1,65 @@
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import ModalAlerta from "./ModalAlerta";
 import { useModalAlerta } from "../hooks/useModalAlerta";
-import { useForm } from "react-hook-form";
 import {
-  asignarInventarioProductoEstablecido,
-  listaProductosEstablecidos,
-} from "../axios/inventarios/inventarioProductosEstablecidos";
+  asignarInventarioMateriaPrima,
+  listaMateriasPrimas,
+} from "../axios/inventarios/inventarioMateriasPrimas";
 
-export default function AsignarProductoEstablecidoASucursal({
-  setModalNuevoProductoEstablecido,
-  origenSeleccionado,
+export default function AsignarMateriaPrimaSucursal({
+  setModalNuevoMateriaPrima,
   sucursales,
+  origenSeleccionado,
 }) {
   const { register, handleSubmit } = useForm({
     defaultValues: {
       id_sucursal: origenSeleccionado,
-      id_producto_establecido: "",
+      id_materia_prima: "",
       cantidad_inicial: "",
     },
   });
   const { alerta, mostrarAlerta } = useModalAlerta();
-  const [dataProductosEstablecidos, setDataProductosEstablecidos] = useState(
-    []
-  );
-  const [loadingProductosEstablecidos, setLoadingProductosEstablecidos] =
-    useState(true);
+  const [dataMateriasPrimas, setDataMateriasPrimas] = useState([]);
+  const [loadingMaterias, setLoadingMaterias] = useState(true);
 
   async function handleCreate(data) {
     try {
-      const status = await asignarInventarioProductoEstablecido(data);
+      const status = await asignarInventarioMateriaPrima(data);
       if (status === 200) {
-        mostrarAlerta("exito", "Se Asigno el Producto Establecido con Éxito");
+        mostrarAlerta("exito", "Se Asigno Materia Prima con Éxito");
         setTimeout(() => {
-          setModalNuevoProductoEstablecido(false);
+          setModalNuevoMateriaPrima(false);
         }, 2200);
         setTimeout(() => {
           window.location.reload();
         }, 2200);
       }
     } catch (error) {
-      console.error("Error al asignar producto establecido:", error);
+      console.error("Error al Asignar Materia Prima:", error);
       if (error.response && error.response.status === 400) {
-        mostrarAlerta(
-          "error",
-          "El Producto Establecido ya Existe en la Sucursal."
-        );
+        mostrarAlerta("error", "La Materia Prima ya Existe en la Sucursal.");
       } else {
-        mostrarAlerta("error", "Error al asignar Producto Establecido");
+        mostrarAlerta("error", "Error al asignar Materia Prima");
       }
     }
   }
 
   useEffect(() => {
-    listaProductosEstablecidos()
-      .then((rs) => setDataProductosEstablecidos(rs))
+    listaMateriasPrimas()
+      .then((rs) => setDataMateriasPrimas(rs))
       .catch((error) => console.error(error))
-      .finally(() => setLoadingProductosEstablecidos(false));
+      .finally(() => setLoadingMaterias(false));
   }, []);
 
   return (
     <>
       <div className="w-100 rounded-lg bg-white shadow-md m-2">
         <div className="flex justify-between  bg-[#89408d] rounded-t-lg md:text-xl text-white font-bold p-2">
-          <h2>Asignar Producto Establecido</h2>
+          <h2>Asignar Materia Prima</h2>
           <button
             className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
-            onClick={() => setModalNuevoProductoEstablecido(false)}
+            onClick={() => setModalNuevoMateriaPrima(false)}
           >
             X
           </button>
@@ -73,7 +67,7 @@ export default function AsignarProductoEstablecidoASucursal({
 
         <form className="p-4 space-y-4" onSubmit={handleSubmit(handleCreate)}>
           <label className="block text-sm font-medium mb-2">
-            Sucursal Destinada:
+            Sucursal destinada:
           </label>
           <input type="hidden" {...register("id_sucursal")} />
           <p className="text-[#89408d]">
@@ -85,21 +79,18 @@ export default function AsignarProductoEstablecidoASucursal({
             </strong>
           </p>
           <label className="block text-sm font-medium mb-2">
-            Producto Establecido:
+            Materia Prima:
           </label>
           <select
-            {...register("id_producto_establecido")}
+            {...register("id_materia_prima")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
     focus:ring-2 focus:ring-[#89408d]"
           >
-            <option value="">Seleccione un Producto Establecido</option>
-            {dataProductosEstablecidos.map((pe) => (
-              <option
-                key={pe.id_producto_establecido}
-                value={pe.id_producto_establecido}
-              >
-                {pe.nombre}
+            <option value="">Seleccione una Materia Prima</option>
+            {dataMateriasPrimas.map((mp) => (
+              <option key={mp.id_materia_prima} value={mp.id_materia_prima}>
+                {mp.nombre}
               </option>
             ))}
           </select>
@@ -114,8 +105,8 @@ export default function AsignarProductoEstablecidoASucursal({
             min="0"
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d]"
-            placeholder="Escriba la cantidad a asignar"
+      focus:ring-2 focus:ring-[#89408d]"
+            placeholder="Escriba la cantidad Inicial"
           />
           <div className="flex justify-end mt-4">
             <button

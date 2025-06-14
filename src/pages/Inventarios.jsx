@@ -6,9 +6,9 @@ import {
 } from "../axios/inventarios/inventarioMateriasPrimas";
 import { listaInventarioProductosEstablecidos } from "../axios/inventarios/inventarioProductosEstablecidos";
 import TablaInventarioProductosEstablecidos from "../components/TablaInventarioProductosEstablecidos";
-import AsignarProductoEstablecidoASucursal from "../components/AsignarProductoEstablecidoaSucursal";
-import AsignarMateriaPrimaASucursal from "../components/AsignarMateriaPrimaASucursal";
 import TransferirProductoEstablecido from "../components/TransferirProductoEstablecido";
+import AsignarMateriaPrimaSucursal from "../components/AsignarMateriaPrimaSucursal";
+import AsignarProductoEstablecidoSucursal from "../components/AsignarProductoEstablecidoSucursal";
 
 export default function Inventarios() {
   const [modalNuevoProductoEstablecido, setModalNuevoProductoEstablecido] =
@@ -207,7 +207,7 @@ export default function Inventarios() {
       )}
       {modalNuevoProductoEstablecido && (
         <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
-          <AsignarProductoEstablecidoASucursal
+          <AsignarProductoEstablecidoSucursal
             setModalNuevoProductoEstablecido={setModalNuevoProductoEstablecido}
             origenSeleccionado={sucursalSeleccionada}
             sucursales={dataSucursales}
@@ -216,7 +216,7 @@ export default function Inventarios() {
       )}
       {modalNuevoMateriaPrima && (
         <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
-          <AsignarMateriaPrimaASucursal
+          <AsignarMateriaPrimaSucursal
             setModalNuevoMateriaPrima={setModalNuevoMateriaPrima}
             sucursales={dataSucursales}
             origenSeleccionado={sucursalSeleccionada}
