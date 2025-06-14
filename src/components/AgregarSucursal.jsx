@@ -15,10 +15,10 @@ export default function AgregarSucursal({ setModalNuevoSucursal }) {
         mostrarAlerta("exito", "Sucursal Creada con Éxito");
         setTimeout(() => {
           setModalNuevoSucursal(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
       console.error("Error al Crear sucursal:", error);

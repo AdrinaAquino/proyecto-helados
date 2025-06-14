@@ -82,23 +82,6 @@ export async function crearCliente(request) {
   }
 }
 
-export async function listaMateriasPrimas() {
-  try {
-    const { data } = await instance.get("/productos/materias-primas");
-    return data;
-  } catch (error) {
-    throw error;
-  }
-}
-export async function listaProductosEstablecidos() {
-  try {
-    const { data } = await instance.get("/productos/establecidos");
-    return data;
-  } catch (error) {
-    throw error;
-  }
-}
-
 export async function listaInventariosMateriasPrimas(id_sucursal) {
   try {
     const { data } = await instance.get(

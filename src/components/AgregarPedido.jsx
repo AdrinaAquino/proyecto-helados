@@ -307,7 +307,7 @@ export default function AgregarPedido({
                       apellido: apellidoInput,
                     };
                     setClienteSeleccionado(clienteCreado);
-                    setDataClientes([...dataClientes, clienteCreado]); // Actualizar la lista
+                    setDataClientes([...dataClientes, clienteCreado]);
                     mostrarAlerta("exito", "Cliente creado y asignado");
                   }
                 }}

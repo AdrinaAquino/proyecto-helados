@@ -34,10 +34,10 @@ export default function AsignarProductoEstablecidoASucursal({
         mostrarAlerta("exito", "Se Asigno el Producto Establecido con Éxito");
         setTimeout(() => {
           setModalNuevoProductoEstablecido(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
       console.error("Error al asignar producto establecido:", error);

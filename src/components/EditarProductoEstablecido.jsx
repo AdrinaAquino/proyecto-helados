@@ -30,10 +30,10 @@ export default function EditarProductoEstablecido({
         mostrarAlerta("exito", "Producto Editado con Éxito");
         setTimeout(() => {
           setModalAbierto(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
       console.error("Error al Editar producto establecido:", error);

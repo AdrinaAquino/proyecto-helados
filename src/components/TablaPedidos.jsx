@@ -50,7 +50,7 @@ export default function TablaPedidos({ pedidos }) {
                   <tr className="border-b border-gray-200 hover:bg-gray-100 text-center">
                     <td className="py-2 px-4">{pedido.id_pedido}</td>
                     <td className="py-2 px-4">
-                      <span>
+                      <div>
                         {pedido.detalles?.map((detalle, index) => (
                           <div key={index}>
                             {detalle.tipo_producto === "Establecido"
@@ -59,7 +59,7 @@ export default function TablaPedidos({ pedidos }) {
                                   ?.nombre_personalizado}
                           </div>
                         ))}
-                      </span>
+                      </div>
                     </td>
                     <td className="py-2 px-4">
                       {pedido.nombre_cliente || "S/N"}

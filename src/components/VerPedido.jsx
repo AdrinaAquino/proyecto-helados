@@ -70,8 +70,8 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
                 </p>
 
                 {detalle.tipo_producto === "Establecido" ? (
-                  <>
-                    <p>
+                  <div>
+                    <div>
                       <span className="font-semibold">
                         Nombre del Producto:
                       </span>
@@ -83,7 +83,7 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
                           {detalle.nombre_producto}
                         </span>
                       </div>
-                    </p>
+                    </div>
                     <p>
                       <span className="font-semibold">Cantidad:</span>{" "}
                       {detalle.cantidad}
@@ -92,9 +92,9 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
                       <span className="font-semibold">Subtotal:</span> Bs.{" "}
                       {detalle.subtotal}
                     </p>
-                  </>
+                  </div>
                 ) : (
-                  <>
+                  <div>
                     <p>
                       <span className="font-semibold">
                         Nombre del Producto Personalizado:
@@ -127,7 +127,7 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
                       <span className="font-semibold">Subtotal:</span>{" "}
                       {detalle.subtotal}
                     </p>
-                  </>
+                  </div>
                 )}
               </div>
             ))}

@@ -13,6 +13,7 @@ import Predicciones from "./pages/Predicciones";
 import Unauthorized from "./pages/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
 import Reportes from "./pages/Reportes";
+import RedireccionarPorRol from "./components/RedireccionarPorRol";
 
 function DashboardLayout() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -43,38 +44,24 @@ export default function App() {
       <Route path="/unauthorized" element={<Unauthorized />} />
 
       <Route element={<DashboardLayout />}>
-        <Route element={<PrivateRoute allowedRoles={[1]} />}>
-          <Route path="/" element={<Navigate to="/sucursales" replace />} />
+        <Route element={<PrivateRoute allowedRoles={[1, 2, 3]} />}>
+          <Route index element={<RedireccionarPorRol />} />
+          <Route path="clientes" element={<Clientes />} />
+          <Route path="pedidos" element={<Pedidos />} />
+        </Route>
+
+        <Route element={<PrivateRoute allowedRoles={[1, 2]} />}>
+          <Route path="inventarios" element={<Inventarios />} />
         </Route>
 
         <Route element={<PrivateRoute allowedRoles={[1]} />}>
-          <Route path="/sucursales" element={<Sucursales />} />
-          <Route path="/personal" element={<Personal />} />
+          <Route path="sucursales" element={<Sucursales />} />
+          <Route path="personal" element={<Personal />} />
+          <Route path="productos" element={<Productos />} />
+          <Route path="reportes" element={<Reportes />} />
+          <Route path="predicciones" element={<Predicciones />} />
         </Route>
-
-        <Route element={<PrivateRoute allowedRoles={[1]} />}>
-          <Route path="/clientes" element={<Clientes />} />
-        </Route>
-
-        <Route element={<PrivateRoute allowedRoles={[1]} />}>
-          <Route path="/productos" element={<Productos />} />
-        </Route>
-
-        <Route element={<PrivateRoute allowedRoles={[1]} />}>
-          <Route path="/inventarios" element={<Inventarios />} />
-        </Route>
-
-        <Route element={<PrivateRoute allowedRoles={[1]} />}>
-          <Route path="/pedidos" element={<Pedidos />} />
-        </Route>
-
-        <Route element={<PrivateRoute allowedRoles={[1]} />}>
-          <Route path="/reportes" element={<Reportes />} />
-        </Route>
-
-        <Route element={<PrivateRoute allowedRoles={[1]} />}>
-          <Route path="/predicciones" element={<Predicciones />} />
-        </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );

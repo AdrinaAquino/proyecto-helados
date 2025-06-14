@@ -23,10 +23,10 @@ export default function EditarCliente({ setModalAbierto, cliente }) {
         mostrarAlerta("exito", "Cliente Editado con Éxito");
         setTimeout(() => {
           setModalAbierto(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
       console.error("Error al editar los datos del cliente:", error);

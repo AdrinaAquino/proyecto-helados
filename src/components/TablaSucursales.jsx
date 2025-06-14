@@ -20,7 +20,7 @@ export default function TablaSucursales({ data }) {
           mostrarAlerta("exito", "Sucursal Eliminada con Éxito");
           setTimeout(() => {
             setSucursalEliminar(false);
-          }, 3000);
+          }, 2200);
           setTimeout(() => {
             window.location.reload();
           }, 4000);

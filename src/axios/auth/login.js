@@ -37,12 +37,3 @@ export async function deleteUser(id) {
     throw error;
   }
 }
-
-export async function logout() {
-  try {
-    const { status } = await instance.post("/auth/logout");
-    return status;
-  } catch (error) {
-    throw error;
-  }
-}

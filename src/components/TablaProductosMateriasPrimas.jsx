@@ -22,7 +22,7 @@ export default function TablaProductosMateriasPrimas({ data }) {
           mostrarAlerta("exito", "Materia Prima Eliminado con Éxito");
           setTimeout(() => {
             setMateriaPrimaEliminar(false);
-          }, 3000);
+          }, 2200);
           setTimeout(() => {
             window.location.reload();
           }, 4000);

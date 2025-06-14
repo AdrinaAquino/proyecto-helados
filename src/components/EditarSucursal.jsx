@@ -25,10 +25,10 @@ export default function EditarSucursal({ setModalAbierto, sucursal }) {
         mostrarAlerta("exito", "Sucursal Editada con Éxito");
         setTimeout(() => {
           setModalAbierto(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
       console.error("Error al Editar sucursal:", error);

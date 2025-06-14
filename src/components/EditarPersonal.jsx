@@ -35,10 +35,10 @@ export default function EditarPersonal({
         mostrarAlerta("exito", "Personal Editado con Éxito");
         setTimeout(() => {
           setModalAbierto(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
       console.error("Error al editar los datos de la persona:", error);

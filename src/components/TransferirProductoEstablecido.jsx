@@ -48,10 +48,10 @@ export default function TransferirProductoEstablecido({
         mostrarAlerta("exito", "Se Transfirio Producto Establecido con Éxito");
         setTimeout(() => {
           setModalTransferirProductoEstablecido(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
       console.error("Error al Transferir producto establecido:", error);

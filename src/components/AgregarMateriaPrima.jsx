@@ -16,10 +16,10 @@ export default function AgregarMateriaPrima({ setModalNuevoMateriaPrima }) {
         mostrarAlerta("exito", "Producto Creado con Éxito");
         setTimeout(() => {
           setModalNuevoMateriaPrima(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
       console.error("Error al Crear producto establecido:", error);

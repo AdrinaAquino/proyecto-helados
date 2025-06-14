@@ -15,10 +15,10 @@ export default function AgregarCliente({ setModalNuevoCliente }) {
         mostrarAlerta("exito", "Cliente Creado con Éxito");
         setTimeout(() => {
           setModalNuevoCliente(false);
-        }, 3000);
+        }, 2200);
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2200);
       }
     } catch (error) {
       console.error("Error al Crear cliente:", error);

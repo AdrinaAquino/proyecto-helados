@@ -25,7 +25,7 @@ export default function TablaPersonal({ dataPersonal, dataSucursales }) {
           }, 2000);
           setTimeout(() => {
             window.location.reload();
-          }, 3000);
+          }, 2200);
         }
       } catch (error) {
         console.error("Error eliminando personal:", error);
@@ -44,7 +44,7 @@ export default function TablaPersonal({ dataPersonal, dataSucursales }) {
       personal.id_rol === 1
         ? "Administrador"
         : personal.id_rol === 2
-        ? "Personal"
+        ? "Encargado Sucursal"
         : personal.id_rol === 3
         ? "Vendedor"
         : "Desconocido";
@@ -98,7 +98,7 @@ export default function TablaPersonal({ dataPersonal, dataSucursales }) {
                       {personal.id_rol === 1
                         ? "Administrador"
                         : personal.id_rol === 2
-                        ? "Personal"
+                        ? "Encargado Sucursal"
                         : personal.id_rol === 3
                         ? "Vendedor"
                         : "Desconocido"}
