@@ -17,6 +17,7 @@ export default function AgregarPedido({
   setModalNuevoPedido,
   sucursales,
   sucursalSeleccionada,
+  onPedidoCreado,
 }) {
   const { register, handleSubmit, control, watch, setValue, getValues, reset } =
     useForm();
@@ -166,9 +167,7 @@ export default function AgregarPedido({
         mostrarAlerta("exito", "Pedido Creado con Éxito");
         setTimeout(() => {
           setModalNuevoPedido(false);
-        }, 2200);
-        setTimeout(() => {
-          window.location.reload();
+          onPedidoCreado();
         }, 2200);
       }
     } catch (error) {

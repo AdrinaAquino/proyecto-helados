@@ -20,7 +20,7 @@ export default function VerCliente({ setClienteVer, cliente }) {
           </p>
           <p>
             <span className="font-semibold">Fecha de Registro:</span>{" "}
-            {new Date(cliente.fecha_registro).toLocaleString()}
+            {new Date(cliente.fecha_registro).toLocaleDateString()}
           </p>
           <p>
             <span className="font-semibold">Id_cliente:</span>{" "}

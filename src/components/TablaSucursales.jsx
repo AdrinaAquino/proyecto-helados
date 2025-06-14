@@ -23,7 +23,7 @@ export default function TablaSucursales({ data }) {
           }, 2200);
           setTimeout(() => {
             window.location.reload();
-          }, 4000);
+          }, 2200);
         }
       } catch (error) {
         console.error("Error eliminando sucursal:", error);

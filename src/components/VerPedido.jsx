@@ -21,7 +21,7 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
             </p>
             <p>
               <span className="font-semibold">Fecha y Hora del Pedido:</span>{" "}
-              {new Date(pedidos.fecha_pedido).toLocaleString()}
+              {new Date(pedidos.fecha_pedido).toLocaleDateString()}
             </p>
             <p>
               <span className="font-semibold">Personal que Atendió:</span>{" "}

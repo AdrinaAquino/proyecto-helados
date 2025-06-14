@@ -25,11 +25,19 @@ export default function TablaProductosMateriasPrimas({ data }) {
           }, 2200);
           setTimeout(() => {
             window.location.reload();
-          }, 4000);
+          }, 2200);
         }
       } catch (error) {
-        console.error("Error eliminando materias primas :", error);
-        mostrarAlerta("error", "Error al Eliminar Materia Prima");
+        const status = error?.response?.status;
+        if (status === 400) {
+          mostrarAlerta(
+            "error",
+            "No se puede eliminar: está en uso en productos o inventarios"
+          );
+        } else {
+          console.error("Error al Eliminar Materia Prima:", error);
+          mostrarAlerta("error", "Error al Eliminar Materia Prima");
+        }
       }
     }
   };

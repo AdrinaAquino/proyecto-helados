@@ -111,7 +111,7 @@ export default function TablaPersonal({ dataPersonal, dataSucursales }) {
                         ? "Nunca"
                         : new Date(
                             personal.fecha_ultimo_login
-                          ).toLocaleString()}
+                          ).toLocaleDateString()}
                     </td>
                     <td className="py-2 px-4">
                       <div className="flex justify-center space-x-2">

@@ -41,7 +41,7 @@ export default function VerPersonal({
               <span className="font-semibold">Fecha Ultima Conexión:</span>{" "}
               {personal.fecha_ultimo_login === null
                 ? "Nunca"
-                : new Date(personal.fecha_ultimo_login).toLocaleString()}
+                : new Date(personal.fecha_ultimo_login).toLocaleDateString()}
             </p>
             <p>
               <span className="font-semibold">Id Personal:</span>{" "}

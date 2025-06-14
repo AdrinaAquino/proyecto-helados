@@ -38,7 +38,6 @@ export default function TablaPedidos({ pedidos }) {
                 <th className="py-2 px-4">Estado</th>
                 <th className="py-2 px-4">Metodo de Pago</th>
                 <th className="py-2 px-4">Fecha de Pedido</th>
-                <th className="py-2 px-4">Hora de Pedido</th>
                 <th className="py-2 px-4">Nombre del Personal</th>
                 <th className="py-2 px-4">Nombre Sucursal</th>
                 <th className="py-2 px-4">Opciones</th>
@@ -84,12 +83,6 @@ export default function TablaPedidos({ pedidos }) {
                       {new Date(pedido.fecha_pedido).toLocaleDateString()}
                     </td>
 
-                    <td className="py-2 px-4">
-                      {new Date(pedido.fecha_pedido).toLocaleTimeString(
-                        "es-BO",
-                        { timeStyle: "short" }
-                      )}
-                    </td>
                     <td className="py-2 px-4">{pedido.nombre_personal}</td>
                     <td className="py-2 px-4">{pedido.nombre_sucursal}</td>
 

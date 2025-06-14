@@ -55,7 +55,7 @@ export default function Reportes() {
       ) : (
         <div>
           <h1 className="text-2xl font-bold mb-4">Reportes</h1>
-          <div className="flex flex-wrap gap-2 justify-center">
+          <div className="flex flex-wrap gap-5 justify-center">
             <div className="w-65 bg-purple-50 p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
               <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
                 🍨 Productos Más Vendidos
@@ -64,7 +64,7 @@ export default function Reportes() {
                 {dataMasVendidos?.data?.map((item, index) => (
                   <li key={index} className="bg-white rounded-xl p-3 shadow-md">
                     <strong className="text-xl text-purple-900">
-                      {item.producto}
+                      {index + 1}. {item.producto}
                     </strong>
                     <p className="text-purple-700 mt-1">
                       Unidades vendidas: {item.unidades_vendidas}
@@ -87,7 +87,7 @@ export default function Reportes() {
                     className="bg-white rounded-xl p-3 shadow-md "
                   >
                     <strong className="text-xl text-purple-900">
-                      {item.sucursal}
+                      {index + 1}. {item.sucursal}
                     </strong>
                     <p className="text-purple-700 mt-1">
                       Total pedidos: {item.total_pedidos}
@@ -113,7 +113,7 @@ export default function Reportes() {
                     className="bg-white rounded-xl p-3 shadow-md "
                   >
                     <strong className="text-xl text-purple-900">
-                      {item.materia_prima}
+                      {index + 1}.{item.materia_prima}
                     </strong>
                     <p className="text-purple-700 mt-1">
                       Total utilizado: {item.total_utilizado} {item.unidad}
@@ -130,7 +130,7 @@ export default function Reportes() {
                 {dataClientesFrecuentes?.data?.map((item, index) => (
                   <li key={index} className="bg-white rounded-xl p-3 shadow-md">
                     <strong className="text-xl text-purple-900">
-                      {item.apellido} (CI/NIT: {item.ci_nit})
+                      {index + 1}.{item.apellido} (CI/NIT: {item.ci_nit})
                     </strong>
                     <p className="text-purple-700 mt-1">
                       Total pedidos: {item.total_pedidos}
@@ -140,32 +140,6 @@ export default function Reportes() {
                     </p>
                     <p className="text-purple-700">
                       Promedio por pedido: {item.promedio_por_pedido} Bs
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="w-65 bg-purple-50 p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
-              <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
-                ⏰ Ventas por Horario
-              </h2>
-              <ul className="space-y-4">
-                {dataVentasPorHorario?.data?.map((item, index) => (
-                  <li
-                    key={index}
-                    className="bg-white rounded-xl p-3 shadow-md "
-                  >
-                    <strong className="text-xl text-purple-900">
-                      {item.franja_horaria}
-                    </strong>
-                    <p className="text-purple-700 mt-1">
-                      Total pedidos: {item.total_pedidos}
-                    </p>
-                    <p className="text-purple-700">
-                      Ventas totales: {item.ventas_totales} Bs
-                    </p>
-                    <p className="text-purple-700">
-                      Ticket promedio: {item.ticket_promedio.toFixed(2)} Bs
                     </p>
                   </li>
                 ))}

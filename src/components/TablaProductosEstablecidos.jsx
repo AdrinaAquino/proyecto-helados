@@ -27,11 +27,19 @@ export default function TablaProductosEstablecidos({ data }) {
           }, 2200);
           setTimeout(() => {
             window.location.reload();
-          }, 4000);
+          }, 2200);
         }
       } catch (error) {
-        console.error("Error eliminando producto establecido:", error);
-        mostrarAlerta("error", "Error al Eliminar Producto Establecido");
+        const status = error?.response?.status;
+        if (status === 400) {
+          mostrarAlerta(
+            "error",
+            "No se puede eliminar: está en uso en productos o inventarios"
+          );
+        } else {
+          console.error("Error al Eliminar producto establecido:", error);
+          mostrarAlerta("error", "Error al Eliminar Producto Establecido");
+        }
       }
     }
   };

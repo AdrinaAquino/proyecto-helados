@@ -21,7 +21,7 @@ export default function DetallePedido({
         return (
           <div
             key={item.id || index}
-            className="border p-3 rounded mb-4 bg-fuchsia-100"
+            className="border p-3 rounded mb-4 bg-fuchsia-50"
           >
             <div className="flex justify-between items-center">
               <h3 className="font-semibold text-purple-700">

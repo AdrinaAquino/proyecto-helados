@@ -141,7 +141,9 @@ export default function AgregarPersonal({
             <option value="3">Vendedor</option>
           </select>
 
-          <label className="block text-sm font-medium mb-2">Id_sucursal</label>
+          <label className="block text-sm font-medium mb-2">
+            Sucursal Asignada
+          </label>
           <select
             {...register("id_sucursal")}
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]

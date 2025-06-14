@@ -31,20 +31,19 @@ export default function Pedidos() {
     fetchSucursales();
   }, []);
 
+  const fetchPedidos = async () => {
+    if (!sucursalSeleccionada) return;
+    setLoading(true);
+    try {
+      const pedidos = await listaPedidosSucursal(sucursalSeleccionada);
+      setDataPedido(pedidos);
+    } catch (error) {
+      console.error("Error cargando pedidos:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchPedidos = async () => {
-      if (!sucursalSeleccionada) return;
-      setLoading(true);
-      try {
-        const pedidos = await listaPedidosSucursal(sucursalSeleccionada);
-        setDataPedido(pedidos);
-      } catch (error) {
-        console.error("Error cargando pedidos:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchPedidos();
   }, [sucursalSeleccionada]);
 
@@ -81,19 +80,20 @@ export default function Pedidos() {
       </div>
       <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
         <div className=" md:flex justify-between items-center">
-          <h2 className="text-xl font-semibold mb-2">
+          <h2 className="text-2xl font-bold mb-2 text-blue-600 ">
             Pedido de{" "}
             {sucursalSeleccionada
               ? dataSucursales.find(
                   (s) => s.id_sucursal === sucursalSeleccionada
                 )?.nombre
               : "todas las sucursales"}
+            🏪
           </h2>
           <button
-            className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600 hover:scale-103"
+            className="text-2xl border-4 border-green-600 rounded-2xl bg-[#91ff02] font-bold  py-3 px-3  cursor-pointer hover:bg-green-400 hover:text-white hover:scale-103"
             onClick={() => setModalNuevoPedido(true)}
           >
-            <strong className="text-xl">+</strong> Nueva Pedido
+            <strong className="text-2xl">+</strong> Nueva Pedido🍨
           </button>
         </div>
 
@@ -110,6 +110,7 @@ export default function Pedidos() {
               setModalNuevoPedido={setModalNuevoPedido}
               sucursalSeleccionada={sucursalSeleccionada}
               sucursales={dataSucursales}
+              onPedidoCreado={fetchPedidos}
             />
           </div>
         )}
