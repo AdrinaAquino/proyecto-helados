@@ -20,20 +20,8 @@ export default function DashboardTendencia({ dataTendencia }) {
 
   return (
     <div className="p-2">
-      <div className="bg-white p-4 rounded-2xl shadow-lg border border-purple-100">
-        {dataTendencia?.map((item, index) => {
-          return (
-            <div key={index}>
-              <h1 className="text-xl font-bold text-purple-800 mb-6 text-center">
-                {item.producto}
-              </h1>
-              <h2 className="text-lg font-bold text-purple-800 mb-2">
-                Crecimiento: {item.crecimiento}
-              </h2>
-            </div>
-          );
-        })}
-        <ResponsiveContainer width="100%" height={400}>
+      <div className="bg-white p-4 rounded-2xl shadow-lg border border-purple-100 w-150">
+        <ResponsiveContainer width={550} height={400}>
           <BarChart
             data={datos}
             margin={{ top: 20, right: 30, left: 0, bottom: 100 }}

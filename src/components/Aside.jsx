@@ -26,11 +26,11 @@ export default function Aside({ openMenu }) {
             to="/sucursales"
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/sucursales"
-                ? "bg-purple-900 text-white font-bold"
-                : "hover:bg-slate-700 text-white"
+                ? "bg-green-400 text-white font-bold"
+                : "hover:bg-[#398bd3] text-white"
             }`}
           >
-            Sucursales
+            ⚽ Sucursales
           </Link>
         )}
 
@@ -39,11 +39,11 @@ export default function Aside({ openMenu }) {
             to="/personal"
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/personal"
-                ? "bg-purple-900 text-white font-bold"
-                : "hover:bg-slate-700 text-white"
+                ? "bg-green-400 text-white font-bold"
+                : "hover:bg-[#398bd3] text-white"
             }`}
           >
-            Personal
+            ⚽ Personal
           </Link>
         )}
 
@@ -52,11 +52,11 @@ export default function Aside({ openMenu }) {
             to="/clientes"
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/clientes"
-                ? "bg-purple-900 text-white font-bold"
-                : "hover:bg-slate-700 text-white"
+                ? "bg-green-400 text-white font-bold"
+                : "hover:bg-[#398bd3] text-white"
             }`}
           >
-            Clientes
+            ⚽ Clientes
           </Link>
         )}
 
@@ -65,11 +65,11 @@ export default function Aside({ openMenu }) {
             to="/productos"
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/productos"
-                ? "bg-purple-900 text-white font-bold"
-                : "hover:bg-slate-700 text-white"
+                ? "bg-green-400 text-white font-bold"
+                : "hover:bg-[#398bd3] text-white"
             }`}
           >
-            Productos
+            ⚽ Productos
           </Link>
         )}
 
@@ -78,11 +78,11 @@ export default function Aside({ openMenu }) {
             to="/inventarios"
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/inventarios"
-                ? "bg-purple-900 text-white font-bold"
-                : "hover:bg-slate-700 text-white"
+                ? "bg-green-400 text-white font-bold"
+                : "hover:bg-[#398bd3] text-white"
             }`}
           >
-            Inventarios
+            ⚽ Inventarios
           </Link>
         )}
 
@@ -91,11 +91,11 @@ export default function Aside({ openMenu }) {
             to="/pedidos"
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/pedidos"
-                ? "bg-purple-900 text-white font-bold"
-                : "hover:bg-slate-700 text-white"
+                ? "bg-green-400 text-white font-bold"
+                : "hover:bg-[#398bd3] text-white"
             }`}
           >
-            Pedidos
+            ⚽ Pedidos
           </Link>
         )}
 
@@ -104,11 +104,11 @@ export default function Aside({ openMenu }) {
             to="/reportes"
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/reportes"
-                ? "bg-purple-900 text-white font-bold"
-                : "hover:bg-slate-700 text-white"
+                ? "bg-green-400 text-white font-bold"
+                : "hover:bg-[#398bd3] text-white"
             }`}
           >
-            Reportes
+            ⚽ Reportes
           </Link>
         )}
 
@@ -117,11 +117,11 @@ export default function Aside({ openMenu }) {
             to="/predicciones"
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/predicciones"
-                ? "bg-purple-900 text-white font-bold"
-                : "hover:bg-slate-700 text-white"
+                ? "bg-green-400 text-white font-bold"
+                : "hover:bg-[#398bd3] text-white"
             }`}
           >
-            Predicciones
+            ⚽ Predicciones
           </Link>
         )}
         <button
@@ -130,7 +130,7 @@ export default function Aside({ openMenu }) {
             localStorage.removeItem("user");
             window.location.href = "/login";
           }}
-          className=" font-bold px-1 py-2 rounded-md hover:bg-slate-700 transition "
+          className=" font-bold px-1 py-2 rounded-md hover:bg-red-500 hover:text-white cursor-pointer"
         >
           Cerrar sesión
         </button>

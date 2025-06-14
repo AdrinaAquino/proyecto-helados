@@ -14,7 +14,7 @@ export default function NavBar({ toggleMenu }) {
       <img src="logo.jpeg" alt="Logo" className="h-10 rounded-full" />
 
       <h1 className="text-lg font-bold ml-4 text-white md:ml-50">
-        Bienvenido: {data.nombre}
+        Bienvenid@: {data.nombre}
       </h1>
 
       <button className="md:hidden" onClick={toggleMenu}>
