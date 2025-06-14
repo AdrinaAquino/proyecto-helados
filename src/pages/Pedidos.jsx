@@ -90,7 +90,7 @@ export default function Pedidos() {
             🏪
           </h2>
           <button
-            className="text-2xl border-4 border-green-600 rounded-2xl bg-[#91ff02] font-bold  py-3 px-3  cursor-pointer hover:bg-green-400 hover:text-white hover:scale-103"
+            className="text-xl border-4 border-green-600 rounded-2xl bg-[#97f61b] font-bold  py-3 px-3  cursor-pointer hover:bg-[#efff89] hover:scale-103"
             onClick={() => setModalNuevoPedido(true)}
           >
             <strong className="text-2xl">+</strong> Nueva Pedido🍨
