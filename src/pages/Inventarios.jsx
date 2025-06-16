@@ -71,7 +71,7 @@ export default function Inventarios() {
           Administración de Inventario
         </h2>
       </div>
-      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+      <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
         {loadingSucursales ? (
           <p className="text-center text-lg py-10 text-purple-700">
             Cargando Sucursales...
@@ -100,7 +100,7 @@ export default function Inventarios() {
           </div>
         )}
       </div>
-      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+      <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
         <h2 className="text-xl font-semibold mb-2">
           Seleccione Tipo de Producto
         </h2>
@@ -127,7 +127,7 @@ export default function Inventarios() {
       </div>
 
       {tablaVisible === "establecidos" && (
-        <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg w-full">
+        <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg w-full">
           <h2 className="text-xl font-semibold mb-2">
             Inventario de{" "}
             {tablaVisible === "establecidos"
@@ -165,7 +165,7 @@ export default function Inventarios() {
       )}
 
       {tablaVisible === "materiasPrimas" && (
-        <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+        <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
           <h2 className="text-xl font-semibold mb-2">
             Inventario de{" "}
             {tablaVisible === "establecidos"
@@ -194,7 +194,7 @@ export default function Inventarios() {
         </div>
       )}
       {modalTransferirProductoEstablecido && (
-        <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center">
           <TransferirProductoEstablecido
             setModalTransferirProductoEstablecido={
               setModalTransferirProductoEstablecido
@@ -206,7 +206,7 @@ export default function Inventarios() {
         </div>
       )}
       {modalNuevoProductoEstablecido && (
-        <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center">
           <AsignarProductoEstablecidoSucursal
             setModalNuevoProductoEstablecido={setModalNuevoProductoEstablecido}
             origenSeleccionado={sucursalSeleccionada}

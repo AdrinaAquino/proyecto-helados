@@ -29,7 +29,7 @@ export default function TablaPedidos({ pedidos }) {
       <div className="overflow-x-auto p-4 ">
         <div className="shadow-lg ">
           <table className="min-w-full bg-white overflow-hidden rounded-lg">
-            <thead className="bg-[#89408d] text-white">
+            <thead className="bg-[#3bb48b] text-white">
               <tr>
                 <th className="py-2 px-4 ">Id Pedido</th>
                 <th className="py-2 px-4">Nombre del Producto</th>
@@ -142,7 +142,7 @@ export default function TablaPedidos({ pedidos }) {
             <VerPedido setModalAbierto={setPedidoVer} pedidos={pedidoVer} />
           )}
           {pedidoEditar && (
-            <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+            <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center">
               <EditarPedido
                 setModalAbierto={setPedidoEditar}
                 pedido={pedidoEditar}

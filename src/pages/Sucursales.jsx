@@ -26,7 +26,7 @@ export default function Sucursales() {
           <strong className="text-xl">+</strong> Nueva Sucursal
         </button>
       </div>
-      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+      <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
         {loading ? (
           <p className="text-center text-lg py-10 text-purple-700">
             Cargando sucursales...
@@ -36,7 +36,7 @@ export default function Sucursales() {
         )}
       </div>
       {modalNuevoSucursal && (
-        <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center ">
+        <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center ">
           <AgregarSucursal setModalNuevoSucursal={setModalNuevoSucursal} />
         </div>
       )}

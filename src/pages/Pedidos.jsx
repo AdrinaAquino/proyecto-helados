@@ -50,7 +50,7 @@ export default function Pedidos() {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">Administración de Pedidos</h1>
-      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+      <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
         {loading ? (
           <p className="text-center text-lg py-10 text-purple-700">
             Cargando Sucursales...
@@ -78,7 +78,7 @@ export default function Pedidos() {
           </div>
         )}
       </div>
-      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+      <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
         <div className=" md:flex justify-between items-center">
           <h2 className="text-2xl font-bold mb-2 text-blue-600 ">
             Pedido de{" "}

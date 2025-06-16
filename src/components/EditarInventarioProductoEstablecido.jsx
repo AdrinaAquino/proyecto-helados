@@ -43,10 +43,10 @@ export default function EditarInventarioProductoEstablecido({
   return (
     <>
       <div className="w-100 rounded-lg bg-white shadow-md m-2">
-        <div className="flex justify-between  bg-[#89408d] rounded-t-lg md:text-xl text-white font-bold p-2">
+        <div className="flex justify-between  bg-[#3bb48b] rounded-t-lg md:text-xl text-white font-bold p-2">
           <h2>Ajustar Stock del Producto Establecido</h2>
           <button
-            className="w-7 h-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
+            className="w-7 h-7 border rounded-full bg-[#fe2b2b] hover:bg-red-600 cursor-pointer"
             onClick={() => setModalAbierto(false)}
           >
             X
@@ -64,7 +64,7 @@ export default function EditarInventarioProductoEstablecido({
             min="0"
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Escribe la cantidad del producto establecido"
           />
 
@@ -74,7 +74,7 @@ export default function EditarInventarioProductoEstablecido({
             {...register("motivo")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Escribe el motivo"
           />
 

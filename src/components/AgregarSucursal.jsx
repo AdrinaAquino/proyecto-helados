@@ -27,10 +27,10 @@ export default function AgregarSucursal({ setModalNuevoSucursal }) {
   return (
     <>
       <div className="w-100  rounded-lg bg-white shadow-md m-2">
-        <div className="flex justify-between items-center bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
+        <div className="flex justify-between items-center bg-[#3bb48b] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Nueva Sucursal</h2>
           <button
-            className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer "
+            className="w-7 border rounded-full bg-[#fe2b2b] hover:bg-red-600 cursor-pointer "
             onClick={() => setModalNuevoSucursal(false)}
           >
             X
@@ -44,7 +44,7 @@ export default function AgregarSucursal({ setModalNuevoSucursal }) {
             {...register("nombre")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-focus:ring-2 focus:ring-[#89408d]"
+focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Nombre de la sucursal"
           />
 
@@ -54,7 +54,7 @@ focus:ring-2 focus:ring-[#89408d]"
             {...register("direccion")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-focus:ring-2 focus:ring-[#89408d]"
+focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Ubicación de la sucursal"
           />
 
@@ -64,7 +64,7 @@ focus:ring-2 focus:ring-[#89408d]"
             {...register("telefono")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-focus:ring-2 focus:ring-[#89408d]"
+focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Número de teléfono"
           />
 
@@ -76,7 +76,7 @@ focus:ring-2 focus:ring-[#89408d]"
             {...register("horario_apertura")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-focus:ring-2 focus:ring-[#89408d]"
+focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Horario de apertura"
           />
 
@@ -88,7 +88,7 @@ focus:ring-2 focus:ring-[#89408d]"
             {...register("horario_cierre")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-focus:ring-2 focus:ring-[#89408d]"
+focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Horario de cierre"
           />
           <div className="flex justify-end mt-4" typeof="submit">

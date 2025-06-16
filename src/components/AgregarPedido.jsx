@@ -183,10 +183,10 @@ export default function AgregarPedido({
   return (
     <>
       <div className="w-100 md:w-170 rounded-lg bg-white shadow-md m-2">
-        <div className="flex justify-between bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
+        <div className="flex justify-between bg-[#3bb48b] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Crear Pedido</h2>
           <button
-            className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
+            className="w-7 border rounded-full bg-[#fe2b2b] hover:bg-red-600 cursor-pointer"
             onClick={() => setModalNuevoPedido(false)}
           >
             X
@@ -224,7 +224,7 @@ export default function AgregarPedido({
           <select
             {...register("id_personal", { valueAsNumber: true })}
             required
-            className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+            className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
           >
             <option value="">Seleccione un personal</option>
             {dataPersonal.map((personal) => {
@@ -247,7 +247,7 @@ export default function AgregarPedido({
                   setClienteSeleccionado(null);
                   setMostrarSugerencias(true);
                 }}
-                className="h-10 border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+                className="h-10 border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
                 placeholder="Escriba el CI o NIT del Cliente"
               />
 
@@ -277,7 +277,7 @@ export default function AgregarPedido({
               value={clienteSeleccionado?.apellido || apellidoInput}
               onChange={(e) => setApellidoInput(e.target.value)}
               disabled={!!clienteSeleccionado}
-              className="h-10 border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+              className="h-10 border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
               placeholder="Nombre del Cliente"
             />
 
@@ -321,7 +321,7 @@ export default function AgregarPedido({
           <select
             {...register("metodo_pago")}
             required
-            className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+            className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
           >
             <option value="Efectivo">Efectivo</option>
             <option value="Tarjeta">Tarjeta de crédito</option>

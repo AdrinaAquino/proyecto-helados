@@ -36,10 +36,10 @@ export default function EditarCliente({ setModalAbierto, cliente }) {
   return (
     <>
       <div className="w-100 rounded-lg bg-white shadow-md m-2">
-        <div className="flex justify-between items-center bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
+        <div className="flex justify-between items-center bg-[#3bb48b] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Editar Cliente</h2>
           <button
-            className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
+            className="w-7 border rounded-full bg-[#fe2b2b] hover:bg-red-600 cursor-pointer"
             onClick={() => setModalAbierto(false)}
           >
             X
@@ -53,7 +53,7 @@ export default function EditarCliente({ setModalAbierto, cliente }) {
             {...register("apellido")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Apellido del cliente"
           />
 
@@ -63,7 +63,7 @@ export default function EditarCliente({ setModalAbierto, cliente }) {
             {...register("ci_nit")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Numero de CI o NIT "
           />
 

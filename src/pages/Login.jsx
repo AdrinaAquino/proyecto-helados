@@ -38,7 +38,7 @@ export default function Login() {
             className=" w-full h-full object-cover opacity-30"
           />
         </div>
-        <div className="flex flex-col justify-center items-center w-75 md:h-auto bg-[#dbe9fbee] rounded-lg shadow-lg shadow-cyan-900 p-6 sm:w-100 sm:absolute sm:left-1/2 sm:top-30 sm:-translate-x-1/2">
+        <div className="flex flex-col justify-center items-center w-75 md:h-auto bg-[#c2feead8] rounded-lg shadow-lg shadow-cyan-900 p-6 sm:w-100 sm:absolute sm:left-1/2 sm:top-30 sm:-translate-x-1/2">
           <img src="logo.jpeg" alt="" className="w-15 rounded-full sm:w-30" />
           <h2 className="text-2xl font-bold mb-6">Bienvenido</h2>
           <form className="w-full max-w-sm" onSubmit={handleLogin}>
@@ -51,8 +51,8 @@ export default function Login() {
                 id="username"
                 name="username"
                 placeholder="Ingresa tu nombre de usuario"
-                className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-      focus:ring-2 focus:ring-[#89408d] pr-12"
+                className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
+      focus:ring-2 focus:ring-[#3bb48b] pr-12"
                 required
               />
             </div>
@@ -68,8 +68,8 @@ export default function Login() {
                 type={mostrar ? "text" : "password"}
                 name="password"
                 required
-                className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-      focus:ring-2 focus:ring-[#89408d] pr-12"
+                className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
+      focus:ring-2 focus:ring-[#3bb48b] pr-12"
                 placeholder="Contraseña"
               />
               <button

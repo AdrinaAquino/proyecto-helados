@@ -6,7 +6,7 @@ export default function ModalConfirmacion({
   return (
     <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center z-50">
       <div className="bg-white rounded-lg overflow-hidden shadow-lg text-center max-w-sm w-full">
-        <div className="bg-[#89408d] p-3 text-white font-bold">Eliminar</div>
+        <div className="bg-[#3bb48b] p-3 text-white font-bold">Eliminar</div>
         <p className="mb-4 text-lg px-4">{mensaje}</p>
         <div className="flex justify-center space-x-4 p-4">
           <button

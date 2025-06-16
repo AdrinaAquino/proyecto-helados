@@ -41,7 +41,7 @@ export default function DetallePedido({
             </label>
             <select
               {...register(`detalles.${index}.tipo_producto`)}
-              className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+              className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
               required
             >
               <option value="">Seleccione tipo</option>
@@ -58,7 +58,7 @@ export default function DetallePedido({
                   {...register(`detalles.${index}.id_producto_establecido`, {
                     valueAsNumber: true,
                   })}
-                  className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+                  className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
                   required
                 >
                   <option value="">Seleccione un producto</option>
@@ -79,7 +79,7 @@ export default function DetallePedido({
                 <input
                   type="number"
                   {...register(`detalles.${index}.cantidad`)}
-                  className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+                  className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
                 />
               </>
             )}
@@ -94,7 +94,7 @@ export default function DetallePedido({
                   {...register(
                     `detalles.${index}.producto_personalizado.nombre_personalizado`
                   )}
-                  className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+                  className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
                   required
                 />
 
@@ -108,7 +108,7 @@ export default function DetallePedido({
                   {...register(
                     `detalles.${index}.producto_personalizado.margen`
                   )}
-                  className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+                  className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
                   required
                 />
 
@@ -157,7 +157,7 @@ export default function DetallePedido({
                         type="number"
                         step="0.01"
                         placeholder="Cantidad"
-                        className="border border-gray-500 p-2 w-50 rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#89408d]"
+                        className="border border-gray-500 p-2 w-50 rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff] focus:ring-2 focus:ring-[#3bb48b]"
                         onChange={(e) => {
                           const cantidad = parseFloat(e.target.value);
                           const path = `detalles.${index}.producto_personalizado.detalles`;

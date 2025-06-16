@@ -24,7 +24,7 @@ export default function Clientes() {
           <strong className="text-xl">+</strong> Nuevo Cliente
         </button>
       </div>
-      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+      <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
         {loading ? (
           <p className="text-center text-lg py-10 text-purple-700">
             Cargando Clientes...
@@ -34,7 +34,7 @@ export default function Clientes() {
         )}
       </div>
       {modalNuevoCliente && (
-        <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center">
           <AgregarCliente setModalNuevoCliente={setModalNuevoCliente} />
         </div>
       )}

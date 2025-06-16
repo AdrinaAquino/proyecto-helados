@@ -7,11 +7,11 @@ export default function VerPersonal({
     <div>
       <div className="fixed inset-0 flex items-center justify-center bg-[#aea7b46d] z-50">
         <div className="bg-white rounded-lg overflow-hidden w-full max-w-md shadow-xl relative">
-          <div className="flex justify-between items-center bg-[#89408d] text-white p-3">
+          <div className="flex justify-between bg-[#3bb48b] rounded-t-lg text-xl text-white font-bold p-2">
             <h2 className="text-xl font-bold">Detalles del Personal</h2>
             <button
               onClick={() => setPersonalVer(null)}
-              className=" text-white hover:font-bold w-7 h-7 bg-red-600 rounded-full cursor-pointer"
+              className=" w-7 border rounded-full bg-[#fe2b2b] hover:bg-red-600 cursor-pointer"
             >
               X
             </button>

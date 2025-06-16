@@ -35,7 +35,7 @@ export default function Productos() {
         <h2 className="text-2xl font-bold mb-4">Administración de Productos</h2>
       </div>
 
-      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+      <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
         <h2 className="text-xl font-semibold mb-2">
           Seleccione Tipo de Producto
         </h2>
@@ -62,7 +62,7 @@ export default function Productos() {
       </div>
 
       {tablaVisible === "establecidos" && (
-        <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg w-full">
+        <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg w-full">
           <div className="sm:flex sm:justify-end">
             <button
               className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600 hover:scale-103"
@@ -82,7 +82,7 @@ export default function Productos() {
       )}
 
       {tablaVisible === "materiasPrimas" && (
-        <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+        <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
           <div className="sm:flex sm:justify-end">
             <button
               className="bg-green-500 text-white py-3 px-3 rounded-md cursor-pointer hover:bg-green-600 hover:scale-103"
@@ -102,14 +102,14 @@ export default function Productos() {
       )}
 
       {modalNuevoProductoEstablecido && (
-        <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center">
           <AgregarProductoEstablecido
             setModalNuevoProductoEstablecido={setModalNuevoProductoEstablecido}
           />
         </div>
       )}
       {modalNuevoMateriaPrima && (
-        <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center">
           <AgregarMateriaPrima
             setModalNuevoMateriaPrima={setModalNuevoMateriaPrima}
           />

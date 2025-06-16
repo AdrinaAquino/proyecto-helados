@@ -35,7 +35,7 @@ export default function Personal() {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">Administración de Personal</h1>
-      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+      <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
         {loading ? (
           <p className="text-center text-lg py-10 text-purple-700">
             Cargando Sucursales...
@@ -49,7 +49,7 @@ export default function Personal() {
               className={`m-2 px-4 py-2 rounded-md cursor-pointer transition-all duration-200 hover:scale-105 ${
                 sucursalSeleccionada === null
                   ? "bg-purple-900 text-white font-bold scale-100 ring-4 ring-indigo-300"
-                  : "bg-[#9c2bf9] text-white hover:bg-[#a45bb0]"
+                  : "bg-[#8613e5] text-white hover:bg-[#a45bb0]"
               }`}
               onClick={() => setSucursalSeleccionada(null)}
             >
@@ -73,7 +73,7 @@ export default function Personal() {
           </div>
         )}
       </div>
-      <div className="mb-6 shadow-lg p-4 bg-[#c69bce59] rounded-lg">
+      <div className="mb-6 shadow-lg p-4 bg-[#3bb48c38] rounded-lg">
         <div className=" md:flex justify-between items-center">
           <h2 className="text-xl font-semibold mb-2">
             Personal de{" "}
@@ -102,7 +102,7 @@ export default function Personal() {
           />
         )}
         {modalNuevoPersonal && (
-          <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+          <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center">
             <AgregarPersonal
               setModalNuevoPersonal={setModalNuevoPersonal}
               personal={dataPersonal}

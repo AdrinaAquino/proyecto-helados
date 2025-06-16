@@ -10,7 +10,7 @@ export default function NavBar({ toggleMenu }) {
       .catch((error) => console.error(error));
   }, []);
   return (
-    <div className="w-full bg-[#7a4193] text-white p-4 flex justify-between md:justify-start items-center shadow-md shadow-violet-200">
+    <div className="w-full bg-[#613b76] text-white p-4 flex justify-between md:justify-start items-center shadow-md shadow-violet-200">
       <img src="logo.jpeg" alt="Logo" className="h-10 rounded-full" />
 
       <h1 className="text-lg font-bold ml-4 text-white md:ml-50">

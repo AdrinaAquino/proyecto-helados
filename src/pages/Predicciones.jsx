@@ -39,7 +39,7 @@ export default function Predicciones() {
     <>
       <h1 className="text-2xl font-bold mb-4">Predicciones</h1>
       <div className="flex flex-wrap gap-10 justify-center">
-        <div className="overflow-x-auto min-w-[150px] w-160 bg-purple-50 p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
+        <div className="overflow-x-auto min-w-[150px] w-160 bg-[#3bb48c38] p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
           <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
             Predicciones Tendencia
           </h2>
@@ -49,7 +49,7 @@ export default function Predicciones() {
             <DashboardTendencia dataTendencia={dataTendencia} />
           )}
         </div>
-        <div className="w-65 bg-purple-50 p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
+        <div className="w-65 bg-[#3bb48c38] p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
           <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
             Predicciones de Demanda
           </h2>

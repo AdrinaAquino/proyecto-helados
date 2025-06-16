@@ -37,10 +37,10 @@ export default function AgregarPersonal({
   return (
     <>
       <div className="w-100 rounded-lg bg-white shadow-md m-2">
-        <div className="flex justify-between bg-[#89408d] rounded-t-lg text-xl text-white font-bold p-2">
+        <div className="flex justify-between bg-[#3bb48b] rounded-t-lg text-xl text-white font-bold p-2">
           <h2>Crear Personal</h2>
           <button
-            className="w-7 border rounded-full bg-[#e36161] hover:bg-[#e36161cd] cursor-pointer"
+            className="w-7 border rounded-full bg-[#fe2b2b] hover:bg-red-600 cursor-pointer"
             onClick={() => setModalNuevoPersonal(false)}
           >
             X
@@ -54,7 +54,7 @@ export default function AgregarPersonal({
             {...register("nombre")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Nombre Completo"
           />
 
@@ -64,7 +64,7 @@ export default function AgregarPersonal({
             {...register("usuario")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d]"
+    focus:ring-2 focus:ring-[#3bb48b]"
             placeholder="Nombre de usuario"
           />
 
@@ -75,7 +75,7 @@ export default function AgregarPersonal({
               {...register("contraseña")}
               required
               className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-      focus:ring-2 focus:ring-[#89408d] pr-12"
+      focus:ring-2 focus:ring-[#3bb48b] pr-12"
               placeholder="Contraseña"
             />
             <button
@@ -134,7 +134,7 @@ export default function AgregarPersonal({
             {...register("id_rol")}
             required
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d] cursor-pointer"
+    focus:ring-2 focus:ring-[#3bb48b] cursor-pointer"
           >
             <option value="1">Administrador</option>
             <option value="2">Encargado de Sucursal</option>
@@ -147,7 +147,7 @@ export default function AgregarPersonal({
           <select
             {...register("id_sucursal")}
             className="border border-gray-300 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
-    focus:ring-2 focus:ring-[#89408d] cursor-pointer"
+    focus:ring-2 focus:ring-[#3bb48b] cursor-pointer"
           >
             <option value="">Todas</option>
             {sucursales.map((sucursal) => (

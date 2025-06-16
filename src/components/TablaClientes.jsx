@@ -39,7 +39,7 @@ export default function TablaClientes({ data }) {
       <div className="overflow-x-auto p-4 ">
         <div className="shadow-lg ">
           <table className="min-w-full bg-white overflow-hidden rounded-lg">
-            <thead className="bg-[#89408d] text-white">
+            <thead className="bg-[#3bb48b] text-white">
               <tr>
                 <th className="py-2 px-4 ">CI o NIT</th>
                 <th className="py-2 px-4">Apellido</th>
@@ -111,7 +111,7 @@ export default function TablaClientes({ data }) {
             <VerCliente setClienteVer={setClienteVer} cliente={clienteVer} />
           )}
           {clienteEditar && (
-            <div className="fixed inset-0 bg-[#aea7b46d] flex items-center justify-center">
+            <div className="fixed inset-0 z-50 bg-[#aea7b46d] flex items-center justify-center">
               <EditarCliente
                 setModalAbierto={setClienteEditar}
                 cliente={clienteEditar}

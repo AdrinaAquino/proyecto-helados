@@ -56,7 +56,7 @@ export default function Reportes() {
         <div>
           <h1 className="text-2xl font-bold mb-4">Reportes</h1>
           <div className="flex flex-wrap gap-5 justify-center">
-            <div className="w-65 bg-purple-50 p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
+            <div className="w-65 bg-[#3bb48c38] p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
               <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
                 🍨 Productos Más Vendidos
               </h2>
@@ -76,7 +76,7 @@ export default function Reportes() {
                 ))}
               </ul>
             </div>
-            <div className="w-65 bg-purple-50 p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
+            <div className="w-65 bg-[#3bb48c38] p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
               <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
                 🏪 Sucursales TOP
               </h2>
@@ -102,7 +102,7 @@ export default function Reportes() {
                 ))}
               </ul>
             </div>
-            <div className="w-65 bg-purple-50 p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
+            <div className="w-65 bg-[#3bb48c38] p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
               <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
                 🍇 Materias Primas Más Usadas
               </h2>
@@ -122,7 +122,7 @@ export default function Reportes() {
                 ))}
               </ul>
             </div>
-            <div className="w-65 bg-purple-50 p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
+            <div className="w-65 bg-[#3bb48c38] p-3 rounded-2xl shadow-md mt-3 border border-purple-200">
               <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
                 🧑‍🤝‍🧑 Clientes Frecuentes
               </h2>

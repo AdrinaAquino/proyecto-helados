@@ -18,7 +18,7 @@ export default function Aside({ openMenu }) {
     <aside
       className={`${
         openMenu ? "block" : "hidden"
-      } md:block absolute right-0 top-18 md:top-0 h-auto w-45 shrink-0 flex-none border border-[#8704af] rounded-2xl bg-[#804193d2] font-semibold cursor-pointer md:rounded-none  md:relative md:w-45 md:h-auto md:bg-[#7a4193] text-[#fefffc] p-4 overflow-y-auto z-50`}
+      } md:block absolute right-0 top-18 md:top-0 h-auto w-45 shrink-0 flex-none rounded-2xl bg-[#804193d2] font-semibold cursor-pointer md:rounded-none  md:relative md:w-45 md:h-auto md:bg-[#613b76] text-[#fefffc] p-4 overflow-y-auto z-50`}
     >
       <nav className="space-y-2 flex flex-col">
         {idRol === 1 && (
@@ -27,7 +27,7 @@ export default function Aside({ openMenu }) {
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/sucursales"
                 ? "bg-green-400 text-white font-bold"
-                : "hover:bg-[#398bd3] text-white"
+                : "hover:bg-[#a45bb0] text-white"
             }`}
           >
             ⚽ Sucursales
@@ -40,7 +40,7 @@ export default function Aside({ openMenu }) {
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/personal"
                 ? "bg-green-400 text-white font-bold"
-                : "hover:bg-[#398bd3] text-white"
+                : "hover:bg-[#a45bb0] text-white"
             }`}
           >
             ⚽ Personal
@@ -53,7 +53,7 @@ export default function Aside({ openMenu }) {
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/clientes"
                 ? "bg-green-400 text-white font-bold"
-                : "hover:bg-[#398bd3] text-white"
+                : "hover:bg-[#a45bb0] text-white"
             }`}
           >
             ⚽ Clientes
@@ -66,7 +66,7 @@ export default function Aside({ openMenu }) {
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/productos"
                 ? "bg-green-400 text-white font-bold"
-                : "hover:bg-[#398bd3] text-white"
+                : "hover:bg-[#a45bb0] text-white"
             }`}
           >
             ⚽ Productos
@@ -79,7 +79,7 @@ export default function Aside({ openMenu }) {
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/inventarios"
                 ? "bg-green-400 text-white font-bold"
-                : "hover:bg-[#398bd3] text-white"
+                : "hover:bg-[#a45bb0] text-white"
             }`}
           >
             ⚽ Inventarios
@@ -92,7 +92,7 @@ export default function Aside({ openMenu }) {
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/pedidos"
                 ? "bg-green-400 text-white font-bold"
-                : "hover:bg-[#398bd3] text-white"
+                : "hover:bg-[#a45bb0] text-white"
             }`}
           >
             ⚽ Pedidos
@@ -105,7 +105,7 @@ export default function Aside({ openMenu }) {
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/reportes"
                 ? "bg-green-400 text-white font-bold"
-                : "hover:bg-[#398bd3] text-white"
+                : "hover:bg-[#a45bb0] text-white"
             }`}
           >
             ⚽ Reportes
@@ -118,7 +118,7 @@ export default function Aside({ openMenu }) {
             className={`px-3 py-2 rounded-md transition ${
               location.pathname === "/predicciones"
                 ? "bg-green-400 text-white font-bold"
-                : "hover:bg-[#398bd3] text-white"
+                : "hover:bg-[#a45bb0] text-white"
             }`}
           >
             ⚽ Predicciones
