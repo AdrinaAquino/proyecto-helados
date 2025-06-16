@@ -38,12 +38,12 @@ export default function Login() {
             className=" w-full h-full object-cover opacity-30"
           />
         </div>
-        <div className="flex flex-col justify-center items-center w-75 md:h-auto bg-[#c2feead8] rounded-lg shadow-lg shadow-cyan-900 p-6 sm:w-100 sm:absolute sm:left-1/2 sm:top-30 sm:-translate-x-1/2">
+        <div className="border-1 border-[#7506b0] flex text-[#5e3873] flex-col justify-center items-center w-75 md:h-auto bg-[#c2feead8] rounded-lg shadow-lg shadow-[#603a75] p-6 sm:w-100 sm:absolute sm:left-1/2 sm:top-30 sm:-translate-x-1/2">
           <img src="logo.jpeg" alt="" className="w-15 rounded-full sm:w-30" />
           <h2 className="text-2xl font-bold mb-6">Bienvenido</h2>
           <form className="w-full max-w-sm" onSubmit={handleLogin}>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2 ">
+              <label className="block text-sm font-bold text-[#5e3873] mb-2 ">
                 Nombre de usuario
               </label>
               <input
@@ -51,7 +51,7 @@ export default function Login() {
                 id="username"
                 name="username"
                 placeholder="Ingresa tu nombre de usuario"
-                className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
+                className="border-1 border-[#7506b0] p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
       focus:ring-2 focus:ring-[#3bb48b] pr-12"
                 required
               />
@@ -59,7 +59,7 @@ export default function Login() {
             <div className="mb-6 relative">
               <label
                 htmlFor="password"
-                className=" block text-sm font-medium text-gray-700 mb-2"
+                className=" block text-sm font-bold text-[#5e3873] mb-2"
               >
                 Contraseña
               </label>
@@ -68,7 +68,7 @@ export default function Login() {
                 type={mostrar ? "text" : "password"}
                 name="password"
                 required
-                className="border border-gray-500 p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
+                className="border-1 border-[#7506b0] p-2 w-full rounded focus:outline-none hover:bg-[#eddff186] focus:bg-[#f6efff]
       focus:ring-2 focus:ring-[#3bb48b] pr-12"
                 placeholder="Contraseña"
               />
@@ -134,7 +134,7 @@ export default function Login() {
             ) : (
               <button
                 type="submit"
-                className="font-bold w-full py-2 px-4 rounded-md bg-[#c87bcf95] hover:bg-[#ce85ed95] text-[#1d1c1d] border border-[#560a5d95] cursor-pointer"
+                className="font-bold w-full py-2 px-4 rounded-md bg-green-400 hover:bg-green-500 text-[#1d1c1d] border border-[#560a5d95] cursor-pointer"
               >
                 INICIAR SESIÓN
               </button>
