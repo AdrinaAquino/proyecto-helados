@@ -112,17 +112,13 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
                                 <img src="helado1.png" alt="" className="h-3" />
                                 {"-"}
                                 {mp.nombre_materia} - {mp.cantidad} {mp.unidad}{" "}
-                                - (Subtotal: {mp.subtotal})
+                                - (Precio: {mp.subtotal})
                               </div>
                             </li>
                           )
                         )}
                       </ul>
                     </div>
-                    <p>
-                      <span className="font-semibold">Precio Unitario:</span>{" "}
-                      {detalle.precio_unitario}
-                    </p>
                     <p>
                       <span className="font-semibold">Subtotal:</span>{" "}
                       {detalle.subtotal}
@@ -134,8 +130,7 @@ export default function VerPedido({ setModalAbierto, pedidos }) {
 
             <hr className="my-2" />
             <p>
-              <span className="font-semibold">Total del Pedido:</span> Bs.{" "}
-              {pedidos.total}
+              <span className="font-bold">Total: Bs. {pedidos.total}</span>
             </p>
           </div>
         </div>
