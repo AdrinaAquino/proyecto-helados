@@ -21,7 +21,7 @@ export default function DashboardTendencia({ dataTendencia }) {
   return (
     <div className="p-2">
       <div className="bg-white p-4 rounded-2xl shadow-lg border border-purple-100 w-150">
-        <ResponsiveContainer width={550} height={400}>
+        <ResponsiveContainer width="100%" height={400}>
           <BarChart
             data={datos}
             margin={{ top: 20, right: 30, left: 0, bottom: 100 }}

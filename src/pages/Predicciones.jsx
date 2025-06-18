@@ -11,16 +11,17 @@ export default function Predicciones() {
   const [dataProductos, setDataProductos] = useState([]);
   const [dataDemanda, setDataDemanda] = useState(1);
   const [idProducto, setIdProducto] = useState(1);
+  const [diasAnalisis, setDiasAnalisis] = useState("60");
   const [loadingTendencia, setLoadingTendencia] = useState(true);
   const [loadingDemanda, setLoadingDemanda] = useState(false);
 
   useEffect(() => {
     setLoadingTendencia(true);
-    prediccionesTendencias()
+    prediccionesTendencias(diasAnalisis)
       .then((rs) => setDataTendencia(rs))
       .catch((error) => console.error(error))
       .finally(() => setLoadingTendencia(false));
-  }, []);
+  }, [diasAnalisis]);
 
   useEffect(() => {
     listaProductosEstablecidos()
@@ -43,6 +44,17 @@ export default function Predicciones() {
           <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
             Predicciones Tendencia
           </h2>
+
+          <label className="block mb-1 text-purple-700">
+            Escriba la cantidad de dias de análisis:
+          </label>
+          <input
+            type="number"
+            value={diasAnalisis}
+            onChange={(e) => setDiasAnalisis(e.target.value)}
+            className="border rounded px-2 py-1"
+          />
+
           {loadingTendencia ? (
             <p className="text-center text-purple-700">Cargando...</p>
           ) : (
@@ -55,7 +67,7 @@ export default function Predicciones() {
           </h2>
           <div className="mb-4">
             <label className="block mb-1 text-purple-700">
-              Escriba el ID del producto:
+              Seleccione el producto:
             </label>
             <select
               value={idProducto}

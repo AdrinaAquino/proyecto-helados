@@ -1,6 +1,6 @@
 import { instance } from "../instance";
 
-export async function prediccionesTendencias(dias_analisis = 30) {
+export async function prediccionesTendencias(dias_analisis) {
   try {
     const { data } = await instance.get(
       `/predicciones/tendencias?dias_analisis=${dias_analisis}`
